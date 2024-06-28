@@ -142,7 +142,7 @@ export const Home = () => {
                     !datas.data.Token ?
                         tokenChecker()
                         :
-                        <div className="allposts" style={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center",color:"wheat" }}>
+                        <div className="allposts" style={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center", color: "wheat" }}>
                             <Navbar />
 
                             {
@@ -220,7 +220,7 @@ export const Home = () => {
 
                                                                         {
                                                                             v._id == localStorage.getItem('Id') ?
-                                                                                <><button onClick={() => nav('/myprofile')}>My Profile</button></>
+                                                                                <><button onClick={() => nav(`/myprofile/${v._id}`)}>My Profile</button></>
                                                                                 :
                                                                                 datas.data.AllBatman.find(batman => batman._id == v._id).Followers.includes(localStorage.getItem('Id')) ?
                                                                                     <button onClick={() => FollowUnfollow(v._id)}>Unfollow</button>
@@ -283,10 +283,10 @@ export const Home = () => {
 
                                                             {
                                                                 cmnt.CommentedBy == localStorage.getItem('Id') ?
-                                                                    <>😄</>
+                                                                    <button onClick={() => nav(`/myprofile/${cmnt.CommentedBy}`)}>My Profile</button>
                                                                     :
                                                                     datas.data.AllBatman.find((batman) => batman._id == cmnt.CommentedBy).Followers.includes(localStorage.getItem('Id')) ?
-                                                                    
+
                                                                         <button onClick={() => FollowUnfollow(cmnt.CommentedBy)} style={{ marginRight: "8px", backgroundColor: "red", color: "white", borderRadius: "15px" }}>Unfollow</button>
                                                                         :
                                                                         <button onClick={() => FollowUnfollow(cmnt.CommentedBy)} style={{ marginRight: "8px", backgroundColor: "darkgreen", color: "wheat", borderRadius: "15px" }}>Follow</button>
