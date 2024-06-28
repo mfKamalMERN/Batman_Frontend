@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { Navbar } from "../Components/Navbar"
 import { TableDisplayer } from "../Components/TableDisplayer"
+import { toast } from "react-toastify"
 
 export const MyProfile = () => {
     const [lbatman, setLbatman] = useState([])
@@ -10,7 +11,9 @@ export const MyProfile = () => {
     const [myfollowers, setMyfollowers] = useState([])
     const [followingsstatus, setFollowingsstatus] = useState(false)
     const [followersstatus, setFollowersstatus] = useState(false)
+    const [nameupdatestatus, setNameupdatestatus] = useState(false)
     const [batmanid, setBatmanid] = useState(null)
+    const [newname, setNewname] = useState("")
     const nav = useNavigate()
     const { bid } = useParams()
 
@@ -38,7 +41,7 @@ export const MyProfile = () => {
     useEffect(() => {
         tokenChecker()
 
-    }, [ bid])
+    }, [bid, newname])
 
     const MyFollowings = async () => {
         try {
@@ -64,13 +67,35 @@ export const MyProfile = () => {
         }
     }
 
+    const nameUpdate = (batmanname) => {
+        setNameupdatestatus(!nameupdatestatus)
+        setNewname(batmanname)
+    }
+
+    const UpdateName = () => {
+        setNameupdatestatus(false)
+
+        if (newname.trim() === "") toast(`Invalid Name`)
+
+        else {
+            axios.put(`http://localhost:9000/editname`, { newname })
+                .then(res => {
+                    toast(res.data.Msg)
+                    setNewname("")
+                    setNameupdatestatus(false)
+                })
+                .catch(er => console.log(er))
+        }
+    }
+
     return (
         <div className="all" style={{ display: "flex", flexDirection: "column" }}>
 
             <Navbar />
-            <h2>My Profile</h2>
 
-            <div className="table" style={{ marginTop: "5%", display: "flex", justifyContent: "center" }}>
+            <h2 style={{ marginTop: "5%" }}>My Profile</h2>
+
+            <div className="table" style={{ marginTop: "2%", display: "flex", justifyContent: "center" }}>
 
                 <table border={1} style={{ width: "40%" }}>
                     <thead>
@@ -84,27 +109,51 @@ export const MyProfile = () => {
                         </tr>
                     </thead>
 
-                    <tbody>
-                        {
-                            lbatman.map((batman) => (
+                    {
+                        lbatman.map((batman) => (
 
-                                <tr>
+                            batman._id != localStorage.getItem('Id') ?
 
-                                    <td>{batman.Name}</td>
+                                <tbody>
+                                    <tr>
+                                        <td>{batman.Name}</td>
 
-                                    <td><img src={batman.DP} alt="" style={{ width: "40px", borderRadius: "80px", height: "auto" }} /></td>
+                                        <td><img src={batman.DP} alt="" style={{ width: "40px", borderRadius: "80px", height: "auto" }} /></td>
 
-                                    <td>{batman.Posts.length}</td>
+                                        <td>{batman.Posts.length}</td>
 
-                                    <td><button onClick={MyFollowings}>{batman.Following.length}</button></td>
+                                        <td><button onClick={MyFollowings}>{batman.Following.length}</button></td>
 
-                                    <td><button onClick={MyFollowers}>{batman.Followers.length}</button></td>
-                                </tr>
+                                        <td><button onClick={MyFollowers}>{batman.Followers.length}</button></td>
+                                    </tr>
+                                </tbody>
+                                :
+                                <tbody>
+                                    <tr>
+                                        {
+                                            !nameupdatestatus ?
+                                                <td>{batman.Name}<button onClick={() => nameUpdate(batman.Name)}> ✏️Name</button></td>
+                                                :
+                                                <>
+                                                    <input type="text" value={newname} onChange={e => setNewname(e.target.value)} />
+                                                    <button onClick={UpdateName}>Update</button>
+                                                </>
 
-                            ))
-                        }
+                                        }
 
-                    </tbody>
+                                        <td><img src={batman.DP} alt="" style={{ width: "40px", borderRadius: "80px", height: "auto" }} /><br /><button> ✏️DP</button><br /><button>✏️Pwd</button></td>
+
+                                        <td><button>{batman.Posts.length}</button> <button>➕New</button></td>
+
+                                        <td><button onClick={MyFollowings}>{batman.Following.length}</button></td>
+
+                                        <td><button onClick={MyFollowers}>{batman.Followers.length}</button></td>
+                                    </tr>
+                                </tbody>
+
+                        ))
+                    }
+
 
                 </table>
 
@@ -118,7 +167,7 @@ export const MyProfile = () => {
                         <div className="tbl" style={{ display: "flex", flexDirection: "column" }}>
 
                             <h3>Followings:</h3>
-                            <TableDisplayer batmans={myfollowings} MyF={MyFollowings} />
+                            <TableDisplayer batmans={myfollowings} />
                         </div>
 
                 }
