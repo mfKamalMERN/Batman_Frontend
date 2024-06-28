@@ -218,7 +218,7 @@ export const Home = () => {
 
                                                                         {
                                                                             v._id == localStorage.getItem('Id') ?
-                                                                                <>😄</>
+                                                                                <><button onClick={() => nav('/myprofile')}>My Profile</button></>
                                                                                 :
                                                                                 datas.data.AllBatman.find(batman => batman._id == v._id).Followers.includes(localStorage.getItem('Id')) ?
                                                                                     <button onClick={() => FollowUnfollow(v._id)}>Unfollow</button>
