@@ -1,32 +1,34 @@
-export const TableDisplayer = ({ batmans, MyFollowings }) => {
+import { useNavigate } from "react-router-dom"
+
+export const TableDisplayer = ({ batmans, MyF }) => {
+    const nav = useNavigate()
     return (
-        <table border={1} style={{ width: "55%", marginTop: "5%" }}>
+        <table border={1} style={{ width: "40%", marginTop: "5%" }}>
             <thead>
                 <tr>
-                    <th>Sno</th>
                     <th>Name</th>
-                    <th>Age</th>
-                    <th>Email</th>
+                    <th>Avatar</th>
+                    <th>Posts</th>
                     <th>Following</th>
                     <th>Followers</th>
-                    <th>Posts</th>
-                    <th>Avatar</th>
                 </tr>
             </thead>
 
             <tbody>
                 {
-                    batmans.map((batman, i) => (
+                    batmans.map((batman) => (
 
                         <tr>
-                            <td>{i + 1}</td>
+
                             <td>{batman.Name}</td>
-                            <td>{batman.Age}</td>
-                            <td>{batman.Email}</td>
-                            <td><button onClick={MyFollowings}>{batman.Following.length} batmans</button></td>
-                            <td><button>{batman.Followers.length} batmans</button></td>
+
+                            <td onClick={() => nav(`/myprofile/${batman._id}`)}><img src={batman.DP} alt="" style={{ width: "10%", borderRadius: "80px", height: "auto" }} /></td>
+
                             <td><button>{batman.Posts.length}</button></td>
-                            <td style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "auto" }}><img src={batman.DP} alt="" style={{ width: "10%", borderRadius: "80px", height: "auto" }} /></td>
+                            <td>{batman.Following.length}</td>
+                            <td>{batman.Followers.length}</td>
+
+
                         </tr>
 
                     ))
