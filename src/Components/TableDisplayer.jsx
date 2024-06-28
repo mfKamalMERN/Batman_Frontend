@@ -1,41 +1,44 @@
 import { useNavigate } from "react-router-dom"
 
-export const TableDisplayer = ({ batmans, MyF }) => {
+export const TableDisplayer = ({ batmans }) => {
     const nav = useNavigate()
     return (
-        <table border={1} style={{ width: "40%", marginTop: "5%" }}>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Avatar</th>
-                    <th>Posts</th>
-                    <th>Following</th>
-                    <th>Followers</th>
-                </tr>
-            </thead>
+        <div className="table" style={{ marginTop: "2%", display: "flex", justifyContent: "center" }}>
 
-            <tbody>
-                {
-                    batmans.map((batman) => (
+            <table border={1} style={{ width: "40%" }}>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Avatar</th>
+                        <th>Posts</th>
+                        <th>Following</th>
+                        <th>Followers</th>
+                    </tr>
+                </thead>
 
-                        <tr>
+                <tbody>
+                    {
+                        batmans.map((batman) => (
 
-                            <td>{batman.Name}</td>
+                            <tr>
 
-                            <td onClick={() => nav(`/myprofile/${batman._id}`)}><img src={batman.DP} alt="" style={{ width: "10%", borderRadius: "80px", height: "auto" }} /></td>
+                                <td>{batman.Name}</td>
 
-                            <td><button>{batman.Posts.length}</button></td>
-                            <td>{batman.Following.length}</td>
-                            <td>{batman.Followers.length}</td>
+                                <td onClick={() => nav(`/myprofile/${batman._id}`)}><img src={batman.DP} alt="" style={{ width: "25%", borderRadius: "80px", marginTop: "10%" }} /></td>
+
+                                <td><button>{batman.Posts.length}</button></td>
+                                <td>{batman.Following.length}</td>
+                                <td>{batman.Followers.length}</td>
 
 
-                        </tr>
+                            </tr>
 
-                    ))
-                }
+                        ))
+                    }
 
-            </tbody>
+                </tbody>
 
-        </table>
+            </table>
+        </div>
     )
 }

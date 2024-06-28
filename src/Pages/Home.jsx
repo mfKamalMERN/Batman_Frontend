@@ -150,11 +150,11 @@ export const Home = () => {
 
                                     <div className="card" style={{ border: "1px solid black", minWidth: "30%", display: "flex", flexDirection: "column", alignItems: "center", background: "brown", color: "white", height: "auto", width: "auto", borderRadius: "15px", marginTop: "10%", maxWidth: "90%" }}>
 
-                                        <div className="createdby" style={{ display: "flex", border: "1px solid black", width: "75%", justifyContent: "center", backgroundColor: "darkred", color: "wheat" }}>
+                                        <div className="createdby" style={{ display: "flex", border: "1px solid black", width: "70%", justifyContent: "space-around", backgroundColor: "darkred", color: "wheat" }}>
 
                                             <p>Created By: </p>
 
-                                            <div className="ownerdetails" style={{ display: "flex", flexDirection: "row-reverse", justifyContent: "space-evenly", width: "40%", alignItems: "center" }}>
+                                            <div className="ownerdetails" style={{ display: "flex", flexDirection: "row-reverse", justifyContent: "space-evenly", width: "20%", alignItems: "center" }}>
 
                                                 <p>{datas.data.AllBatman.find((batman) => batman._id == post.Owner).Name}</p>
 
