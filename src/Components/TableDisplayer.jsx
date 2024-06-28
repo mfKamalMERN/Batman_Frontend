@@ -26,7 +26,7 @@ export const TableDisplayer = ({ batmans }) => {
 
                                 <td onClick={() => nav(`/myprofile/${batman._id}`)}><img src={batman.DP} alt="" style={{ width: "25%", borderRadius: "80px", marginTop: "10%" }} /></td>
 
-                                <td><button>{batman.Posts.length}</button></td>
+                                <td><button onClick={() => nav(`/home/${batman._id}`)}>{batman.Posts.length}</button></td>
                                 <td>{batman.Following.length}</td>
                                 <td>{batman.Followers.length}</td>
 

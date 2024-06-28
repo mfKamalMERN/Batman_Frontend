@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { Navbar } from "../Components/Navbar"
 import { TableDisplayer } from "../Components/TableDisplayer"
+import { toast } from "react-toastify"
 
 export const MyProfile = () => {
     const [lbatman, setLbatman] = useState([])
@@ -10,7 +11,9 @@ export const MyProfile = () => {
     const [myfollowers, setMyfollowers] = useState([])
     const [followingsstatus, setFollowingsstatus] = useState(false)
     const [followersstatus, setFollowersstatus] = useState(false)
+    const [nameupdatestatus, setNameupdatestatus] = useState(false)
     const [batmanid, setBatmanid] = useState(null)
+    const [newname, setNewname] = useState("")
     const nav = useNavigate()
     const { bid } = useParams()
 
@@ -38,7 +41,7 @@ export const MyProfile = () => {
     useEffect(() => {
         tokenChecker()
 
-    }, [bid])
+    }, [bid, newname])
 
     const MyFollowings = async () => {
         try {
@@ -61,6 +64,27 @@ export const MyProfile = () => {
 
         } catch (error) {
             console.log(error);
+        }
+    }
+
+    const nameUpdate = (batmanname) => {
+        setNameupdatestatus(!nameupdatestatus)
+        setNewname(batmanname)
+    }
+
+    const UpdateName = () => {
+        setNameupdatestatus(false)
+
+        if (newname.trim() === "") toast(`Invalid Name`)
+
+        else {
+            axios.put(`http://localhost:9000/editname`, { newname })
+                .then(res => {
+                    toast(res.data.Msg)
+                    setNewname("")
+                    setNameupdatestatus(false)
+                })
+                .catch(er => console.log(er))
         }
     }
 
@@ -106,7 +130,16 @@ export const MyProfile = () => {
                                 :
                                 <tbody>
                                     <tr>
-                                        <td>{batman.Name}<button> ✏️Name</button></td>
+                                        {
+                                            !nameupdatestatus ?
+                                                <td>{batman.Name}<button onClick={() => nameUpdate(batman.Name)}> ✏️Name</button></td>
+                                                :
+                                                <>
+                                                    <input type="text" value={newname} onChange={e => setNewname(e.target.value)} />
+                                                    <button onClick={UpdateName}>Update</button>
+                                                </>
+
+                                        }
 
                                         <td><img src={batman.DP} alt="" style={{ width: "40px", borderRadius: "80px", height: "auto" }} /><br /><button> ✏️DP</button><br /><button>✏️Pwd</button></td>
 
