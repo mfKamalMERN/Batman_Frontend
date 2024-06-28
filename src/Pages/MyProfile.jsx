@@ -90,7 +90,7 @@ export const MyProfile = () => {
                 !followingsstatus ?
                     <></>
                     :
-                    <table border={1} style={{ width: "55%",marginTop:"5%" }}>
+                    <table border={1} style={{ width: "55%", marginTop: "5%" }}>
                         <thead>
                             <tr>
                                 <th>Sno</th>
