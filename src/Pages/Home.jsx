@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { Navbar } from '../Components/Navbar';
 
 
 export const Home = () => {
@@ -141,7 +142,8 @@ export const Home = () => {
                     !datas.data.Token ?
                         tokenChecker()
                         :
-                        <div className="allposts" style={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center" }}>
+                        <div className="allposts" style={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center",color:"wheat" }}>
+                            <Navbar />
 
                             {
                                 datas.data.AllPosts.map((post) => (
