@@ -18,6 +18,7 @@ export const MyProfile = () => {
     const [caption, setCaption] = useState("")
     const [file, setFile] = useState(null)
     const [lname, setLname] = useState("")
+    const [freq, setFreq] = useState(false)
     const nav = useNavigate()
     const { bid } = useParams()
 
@@ -46,12 +47,13 @@ export const MyProfile = () => {
     useEffect(() => {
         tokenChecker()
 
-    }, [bid, newname, newpoststatus])
+    }, [bid, newname, newpoststatus, freq])
 
     const MyFollowings = async () => {
         try {
             setFollowingsstatus(!followingsstatus)
             setFollowersstatus(false)
+            setNewpoststatus(false)
             const res = await axios.get(`http://localhost:9000/getmyfollowings/${batmanid}`)
             setMyfollowings(res.data.Followings)
 
@@ -63,6 +65,7 @@ export const MyProfile = () => {
     const MyFollowers = async () => {
         try {
             setFollowingsstatus(false)
+            setNewpoststatus(false)
             setFollowersstatus(!followersstatus)
             const res = await axios.get(`http://localhost:9000/getmyfollowers/${bid}`)
             setMyfollowers(res.data.Followers)
@@ -79,6 +82,7 @@ export const MyProfile = () => {
 
     const UpdateName = () => {
         setNameupdatestatus(false)
+        setNewpoststatus(false)
 
         if (newname.trim() === "") toast(`Invalid Name`)
 
@@ -93,8 +97,38 @@ export const MyProfile = () => {
         }
     }
 
+    const UploadPost = async (e) => {
+        e.preventDefault()
+        if (file === null || caption.trim === "") toast(`Invalid entries`)
+        else {
+            const formdata = new FormData()
+
+            formdata.append('file', file)
+            formdata.append('caption', caption)
+
+            try {
+                const res = await axios.post(`http://localhost:9000/createpost`, formdata)
+                toast(res.data.Msg)
+                setNewpoststatus(false)
+
+            } catch (error) {
+                console.log(error);
+            }
+
+        }
+    }
+
+    const FollowUnfollow = (batmantofollowid) => {
+        axios.put(`http://localhost:9000/followbatman`, { batmantofollowid })
+            .then(res => {
+                toast(res.data.Msg)
+                setFreq(!freq)
+            })
+            .catch(er => console.log(er))
+    }
+
     return (
-        <div className="all" style={{ display: "flex", flexDirection: "column" }}>
+        <div className="all" style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
 
             <Navbar />
 
@@ -172,7 +206,7 @@ export const MyProfile = () => {
                         <div className="tbl" style={{ display: "flex", flexDirection: "column" }}>
 
                             <h3>Followings:</h3>
-                            <TableDisplayer batmans={myfollowings} />
+                            <TableDisplayer batmans={myfollowings} FollowUnfollow={FollowUnfollow} />
                         </div>
 
                 }
@@ -187,7 +221,7 @@ export const MyProfile = () => {
                         <div className="tbl" style={{ display: "flex", flexDirection: "column" }}>
 
                             <h3>Followers:</h3>
-                            <TableDisplayer batmans={myfollowers} MyF={MyFollowers} />
+                            <TableDisplayer batmans={myfollowers} MyF={MyFollowers} FollowUnfollow={FollowUnfollow} />
                         </div>
                 }
             </div>
@@ -196,14 +230,17 @@ export const MyProfile = () => {
                 !newpoststatus ?
                     <></>
                     :
-                    <form action="" style={{ width: "auto" }}>
-                        <label htmlFor="caption">Caption</label>
-                        <input type="text" id="caption" value={caption} onChange={(e) => setCaption(e.target.value)} />
+                    <div className="form" style={{ border: "1px solid wheat", width: "50%", marginLeft: "25%", display: "flex", flexDirection: "column", marginTop: "5%" }}>
 
-                        <input type="file" onChange={(e) => setFile(e.target.files[0])} />
+                        <form action="" onSubmit={UploadPost} style={{ width: "100%" }}>
+                            <label htmlFor="caption">Caption</label>
+                            <input type="text" id="caption" value={caption} onChange={(e) => setCaption(e.target.value)} />
 
-                        <button type="submit" onClick={() => setNewpoststatus(false)}>➕</button>
-                    </form>
+                            <input type="file" onChange={(e) => setFile(e.target.files[0])} />
+
+                            <button type="submit">➕</button>
+                        </form>
+                    </div>
             }
 
         </div>
