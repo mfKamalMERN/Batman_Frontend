@@ -20,11 +20,11 @@ export const PostsDisplayer = ({ values, posts, batmans }) => {
 
                             <p>Created By: </p>
 
-                            <div className="ownerdetails" style={{ display: "flex", flexDirection: "row-reverse", justifyContent: "space-evenly", width: "20%", alignItems: "center" }}>
+                            <div className="ownerdetails" style={{ display: "flex", flexDirection: "row-reverse", width: "40%", alignItems: "center" }}>
 
                                 <p>{batmans.find((batman) => batman._id == post.Owner).Name}</p>
 
-                                <img src={batmans.find((batman) => batman._id == post.Owner).DP} alt="dp" />
+                                <img src={batmans.find((batman) => batman._id == post.Owner).DP} alt="" style={{ width: "11%" }} />
 
                             </div>
 
