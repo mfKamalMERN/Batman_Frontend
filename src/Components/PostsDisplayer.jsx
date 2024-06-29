@@ -14,7 +14,7 @@ export const PostsDisplayer = ({ values, posts, batmans }) => {
             {
                 posts.map((post) => (
 
-                    <div className="card" style={{ border: "2px solid wheat", minWidth: "30%", display: "flex", flexDirection: "column", alignItems: "center", background: "black", color: "white", height: "auto", width: "auto", borderRadius: "15px", marginTop: "7%", maxWidth: "90%" }}>
+                    <div className="card" style={{ border: "2px solid wheat", minWidth: "30%", display: "flex", flexDirection: "column", alignItems: "center", background: "black", color: "white", height: "auto", width: "auto", borderRadius: "15px", marginTop: "30%", maxWidth: "90%" }}>
 
                         <div className="createdby" style={{ display: "flex", border: "1px solid wheat", width: "70%", justifyContent: "space-around", backgroundColor: "black", color: "wheat", borderRadius: "8px" }}>
 
@@ -72,13 +72,13 @@ export const PostsDisplayer = ({ values, posts, batmans }) => {
                                         {
                                             likes.map((v) => (
 
-                                                <div className="likedbatman" style={{ display: "flex", justifyContent: "space-evenly", border: "1px solid black", width: "80%", alignItems: "center", marginTop: "3%", backgroundColor: "darkred", borderRadius: "15px" }}>
+                                                <div className="likedbatman" style={{ display: "flex", justifyContent: "space-evenly", border: "1px solid wheat", width: "82%", alignItems: "center", marginTop: "3%", backgroundColor: "black", borderRadius: "15px" }}>
 
-                                                    <div className="likedbatmandetails" style={{ display: "flex", alignItems: 'center', justifyContent: "space-between", width: "25%", marginLeft: "5%" }}>
+                                                    <div className="likedbatmandetails" style={{ display: "flex", alignItems: 'center', justifyContent: "flex-start", width: "25%" }}>
 
-                                                        <img src={v.DP} style={{ width: "25%", borderRadius: "50px", height: "auto" }} />
+                                                        <img src={v.DP} style={{ width: "25px", borderRadius: "50px", height: "auto" }} />
 
-                                                        <p>{v.Name}</p>
+                                                        <p style={{ fontSize: "13px" }}>{v.Name}</p>
 
                                                     </div>
 
@@ -86,12 +86,12 @@ export const PostsDisplayer = ({ values, posts, batmans }) => {
 
                                                         {
                                                             v._id == localStorage.getItem('Id') ?
-                                                                <><button onClick={() => nav(`/myprofile/${v._id}`)}>My Profile</button></>
+                                                                <button onClick={() => nav(`/myprofile/${v._id}`)} style={{ color: "wheat", backgroundColor: "black", border: "1px solid wheat", borderRadius: "15px" }}>ℹ️</button>
                                                                 :
                                                                 batmans.find(batman => batman._id == v._id).Followers.includes(localStorage.getItem('Id')) ?
-                                                                    <button onClick={() => FollowUnfollow(v._id)}>Unfollow</button>
+                                                                    <button onClick={() => FollowUnfollow(v._id)} style={{ color: "wheat", backgroundColor: "black", border: "1px solid wheat", borderRadius: "15px" }}>Unfollow</button>
                                                                     :
-                                                                    <button onClick={() => FollowUnfollow(v._id)}>Follow</button>
+                                                                    <button onClick={() => FollowUnfollow(v._id)} style={{ color: "wheat", backgroundColor: "black", border: "1px solid wheat", borderRadius: "15px" }}>Follow</button>
 
                                                         }
                                                     </div>

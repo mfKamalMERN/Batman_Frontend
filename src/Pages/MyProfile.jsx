@@ -12,8 +12,12 @@ export const MyProfile = () => {
     const [followingsstatus, setFollowingsstatus] = useState(false)
     const [followersstatus, setFollowersstatus] = useState(false)
     const [nameupdatestatus, setNameupdatestatus] = useState(false)
+    const [newpoststatus, setNewpoststatus] = useState(false)
     const [batmanid, setBatmanid] = useState(null)
     const [newname, setNewname] = useState("")
+    const [caption, setCaption] = useState("")
+    const [file, setFile] = useState(null)
+    const [lname, setLname] = useState("")
     const nav = useNavigate()
     const { bid } = useParams()
 
@@ -28,6 +32,7 @@ export const MyProfile = () => {
 
                 else {
                     setLbatman(res.data.LoggedBatman)
+                    setLname(res.data.LoggedBatman[0].Name)
                     setBatmanid(bid)
                     if (followersstatus || followingsstatus) {
                         setFollowersstatus(false)
@@ -41,7 +46,7 @@ export const MyProfile = () => {
     useEffect(() => {
         tokenChecker()
 
-    }, [bid, newname])
+    }, [bid, newname, newpoststatus])
 
     const MyFollowings = async () => {
         try {
@@ -93,7 +98,7 @@ export const MyProfile = () => {
 
             <Navbar />
 
-            <h2 style={{ marginTop: "5%" }}>My Profile</h2>
+            <h2 style={{ marginTop: "150px" }}>{lname}'s' Profile</h2>
 
             <div className="table" style={{ marginTop: "2%", display: "flex", justifyContent: "center" }}>
 
@@ -120,7 +125,7 @@ export const MyProfile = () => {
 
                                         <td><img src={batman.DP} alt="" style={{ width: "40px", borderRadius: "80px", height: "auto" }} /></td>
 
-                                        <td>{batman.Posts.length}</td>
+                                        <td><button onClick={() => nav(`/home/${batman._id}`)}>{batman.Posts.length}</button></td>
 
                                         <td><button onClick={MyFollowings}>{batman.Following.length}</button></td>
 
@@ -143,7 +148,7 @@ export const MyProfile = () => {
 
                                         <td><img src={batman.DP} alt="" style={{ width: "40px", borderRadius: "80px", height: "auto" }} /><br /><button> ✏️DP</button><br /><button>✏️Pwd</button></td>
 
-                                        <td><button>{batman.Posts.length}</button> <button>➕New</button></td>
+                                        <td><button onClick={() => nav(`/home/${batman._id}`)}>{batman.Posts.length}</button> <button onClick={() => setNewpoststatus(!newpoststatus)}>➕Post</button></td>
 
                                         <td><button onClick={MyFollowings}>{batman.Following.length}</button></td>
 
@@ -186,6 +191,20 @@ export const MyProfile = () => {
                         </div>
                 }
             </div>
+
+            {
+                !newpoststatus ?
+                    <></>
+                    :
+                    <form action="" style={{ width: "auto" }}>
+                        <label htmlFor="caption">Caption</label>
+                        <input type="text" id="caption" value={caption} onChange={(e) => setCaption(e.target.value)} />
+
+                        <input type="file" onChange={(e) => setFile(e.target.files[0])} />
+
+                        <button type="submit" onClick={() => setNewpoststatus(false)}>➕</button>
+                    </form>
+            }
 
         </div>
     )

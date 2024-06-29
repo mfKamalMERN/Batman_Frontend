@@ -40,8 +40,14 @@ export const Home = () => {
                 if (!res.data.Token) nav('/')
                 else {
                     if (res.data.Access) {
-                        setPosts(res.data.Posts)
-                        setAllbatman(res.data.Batmans)
+                        if (res.data.NoPosts) {
+                            toast(res.data.Msg)
+                            nav(`/myprofile/${batmanid}`)
+                        }
+                        else {
+                            setPosts(res.data.Posts)
+                            setAllbatman(res.data.Batmans)
+                        }
                     }
                     else {
                         toast(res.data.Msg)
@@ -57,7 +63,7 @@ export const Home = () => {
 
     useEffect(() => {
         postsFetcher()
-    }, [likes, newcomment, updatedcomment, removecommentstatus, followstatus, posts, allbatman])
+    }, [likes, newcomment, updatedcomment, removecommentstatus, followstatus])
 
     const ViewLikesSetter = (pid) => {
         setCommentstatus(false)
