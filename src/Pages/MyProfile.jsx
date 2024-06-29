@@ -17,6 +17,7 @@ export const MyProfile = () => {
     const [newname, setNewname] = useState("")
     const [caption, setCaption] = useState("")
     const [file, setFile] = useState(null)
+    const [lname, setLname] = useState("")
     const nav = useNavigate()
     const { bid } = useParams()
 
@@ -31,6 +32,7 @@ export const MyProfile = () => {
 
                 else {
                     setLbatman(res.data.LoggedBatman)
+                    setLname(res.data.LoggedBatman[0].Name)
                     setBatmanid(bid)
                     if (followersstatus || followingsstatus) {
                         setFollowersstatus(false)
@@ -96,7 +98,7 @@ export const MyProfile = () => {
 
             <Navbar />
 
-            <h2 style={{ marginTop: "5%" }}>My Profile</h2>
+            <h2 style={{ marginTop: "150px" }}>{lname}'s' Profile</h2>
 
             <div className="table" style={{ marginTop: "2%", display: "flex", justifyContent: "center" }}>
 

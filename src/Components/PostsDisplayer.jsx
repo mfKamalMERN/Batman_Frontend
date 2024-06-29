@@ -14,7 +14,7 @@ export const PostsDisplayer = ({ values, posts, batmans }) => {
             {
                 posts.map((post) => (
 
-                    <div className="card" style={{ border: "2px solid wheat", minWidth: "30%", display: "flex", flexDirection: "column", alignItems: "center", background: "black", color: "white", height: "auto", width: "auto", borderRadius: "15px", marginTop: "7%", maxWidth: "90%" }}>
+                    <div className="card" style={{ border: "2px solid wheat", minWidth: "30%", display: "flex", flexDirection: "column", alignItems: "center", background: "black", color: "white", height: "auto", width: "auto", borderRadius: "15px", marginTop: "30%", maxWidth: "90%" }}>
 
                         <div className="createdby" style={{ display: "flex", border: "1px solid wheat", width: "70%", justifyContent: "space-around", backgroundColor: "black", color: "wheat", borderRadius: "8px" }}>
 
