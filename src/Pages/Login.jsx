@@ -2,6 +2,8 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
+import './Login.css'
+import { Navbar } from "../Components/Navbar"
 
 export const Login = () => {
 
@@ -61,27 +63,52 @@ export const Login = () => {
             .catch(err => console.log(err))
     }
 
+
+
     return (
-        <>
-            <form action="" onSubmit={SubmitForm}>
+        <div className="main" style={{ backgroundColor: "black" }} >
+            <Navbar login={true} />
 
-                <label htmlFor="email">Email</label>
-                <br />
-                <input type="email" id="email" value={email} onChange={e => setEmail(e.target.value)} />
+            <br />
 
-                <br />
-                <br />
+            <div className="logincontent" style={{ display: "flex", backgroundColor: "black", minHeight: "100vh", flexDirection: 'row', justifyContent: "space-evenly" }}>
 
-                <label htmlFor="pwd">Password</label>
-                <br />
-                <input type="password" id="pwd" value={pwd} onChange={e => setPwd(e.target.value)} />
+                <div className="batmanimage">
+                    <img src="https://i.pinimg.com/originals/36/f5/92/36f592b8a986fe8ea161187cb580c0d5.jpg" alt="" style={{ height: "45%", marginTop: "16.5%", width: "92%", borderRadius: "15px" }} />
+                </div>
 
-                <br />
-                <br />
+                <div className="form" style={{ border: "1px solid wheat", width: "35%", display: "flex", justifyContent: "center", color: "wheat", backgroundColor: 'black', marginTop: "10%", borderRadius: "15px", height: "60vh", alignItems: "center" }}>
 
-                <button type="submit">Login</button>
+                    <form action="" onSubmit={SubmitForm} style={{ width: "100%" }}>
+                        <h1>Login</h1>
 
-            </form>
-        </>
+                        <label htmlFor="email">Email</label>
+                        <br />
+                        <input type="email" id="email" value={email} onChange={e => setEmail(e.target.value)} style={{ width: "80%", backgroundColor: "black", color: "wheat", borderRadius: "15px" }} />
+
+                        <br />
+                        <br />
+
+                        <label htmlFor="pwd">Password</label>
+                        <br />
+                        <input type="password" id="pwd" value={pwd} onChange={e => setPwd(e.target.value)} style={{ width: "80%", backgroundColor: "black", color: "wheat", borderRadius: "15px" }} />
+
+                        <br />
+                        <br />
+
+                        <button type="submit" style={{ backgroundColor: "black", color: "wheat", width: "auto", borderRadius: "15px", minWidth: "8%" }}>Login</button>
+
+                        <br />
+                        <br />
+                        <hr />
+
+                        <button onClick={() => nav('/register')} className="newuser" style={{ backgroundColor: "black", color: "wheat", width: "auto", borderRadius: "15px", minWidth: "8%", marginTop: "4%" }}>New User?</button>
+                    </form>
+
+
+                </div>
+            </div>
+
+        </div>
     )
 }
