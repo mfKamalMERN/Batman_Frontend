@@ -47,6 +47,7 @@ export const Home = () => {
                         else {
                             setPosts(res.data.Posts)
                             setAllbatman(res.data.Batmans)
+                            setCommentstatus(!commentstatus)
                         }
                     }
                     else {

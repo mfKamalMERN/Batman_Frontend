@@ -5,6 +5,7 @@ import { Login } from './Pages/Login';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { MyProfile } from './Pages/MyProfile';
+import { Register } from './Pages/Register';
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
     { path: '/home/:batmanid', element: <Home /> },
     { path: '/', element: <Login /> },
     { path: '/myprofile/:bid', element: <MyProfile /> },
+    { path: '/register', element: <Register /> }
   ])
 
   return (
