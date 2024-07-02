@@ -3,6 +3,7 @@ import { Navbar } from "../Components/Navbar"
 import { useNavigate } from "react-router-dom"
 import './Login.css'
 import axios from "axios"
+import { toast } from "react-toastify"
 
 export const Register = () => {
     const [name, setName] = useState("")
@@ -17,7 +18,7 @@ export const Register = () => {
             const res = await axios.get(`http://localhost:9000/getallposts`)
             if (!res.data.Token) {
                 localStorage.clear()
-                nav('/')
+
             }
 
             else nav('/home')
@@ -34,7 +35,16 @@ export const Register = () => {
     const handleSubmit = e => {
         e.preventDefault()
 
-        
+        axios.post(`http://localhost:9000/registerbatman`, { name, age, email, pwd })
+            .then(res => {
+                if (res.data.ValidationError) res.data.ActError.map((e) => toast(e.msg))
+                else {
+                    toast(res.data)
+                    nav('/')
+                }
+            })
+            .catch(er => console.log(er))
+
     }
 
     return (
