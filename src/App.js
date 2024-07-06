@@ -6,6 +6,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { MyProfile } from './Pages/MyProfile';
 import { Register } from './Pages/Register';
+import { AllBatmans } from './Pages/AllBatmans';
 
 function App() {
 
@@ -14,7 +15,8 @@ function App() {
     { path: '/home/:batmanid', element: <Home /> },
     { path: '/', element: <Login /> },
     { path: '/myprofile/:bid', element: <MyProfile /> },
-    { path: '/register', element: <Register /> }
+    { path: '/register', element: <Register /> },
+    { path: '/allbatmans', element: <AllBatmans /> }
   ])
 
   return (

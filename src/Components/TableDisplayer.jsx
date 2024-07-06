@@ -1,7 +1,5 @@
-import axios from "axios"
-import { useEffect, useState } from "react"
+
 import { useNavigate } from "react-router-dom"
-import { toast } from "react-toastify"
 
 export const TableDisplayer = ({ batmans, FollowUnfollow }) => {
     const nav = useNavigate()

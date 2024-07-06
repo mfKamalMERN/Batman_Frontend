@@ -1,11 +1,47 @@
 import { useNavigate } from "react-router-dom"
 import { Navbar } from "./Navbar"
+import { useEffect, useState } from "react"
+import axios from "axios"
+import { toast } from "react-toastify"
 
-export const PostsDisplayer = ({ values, posts, batmans }) => {
+export const PostsDisplayer = ({ values, posts, batmans, postsFetcher }) => {
 
     const { AddNewComment, setNewcomment, newcomment, FollowUnfollow, RemoveComment, editStatussetter, UpdateComment, setUpdatedcomment, updatedcomment, commentid, editstatus, postid, commentstatus, likes, likesstatus, viewComments, ViewLikesSetter, LikeUnlike } = values
 
+    const [editpoststatus, setEditpoststatus] = useState(false)
+    const [file, setFiile] = useState(null)
+    const [newcaption, setNewcaption] = useState("")
+    const [submitStatus, setSubmitstatus] = useState(false)
+
     const nav = useNavigate()
+
+    const updatePost = async (values) => {
+        const { PostID } = values
+        const formdata = new FormData()
+        if (file === null) toast("Pleas select an image file")
+        else if (newcaption.trim() === "") toast("Captionm is Empty")
+        else {
+
+            formdata.append('file', file)
+            formdata.append('newcaption', newcaption)
+
+
+            try {
+                const res = await axios.put(`http://localhost:9000/editpost/${PostID}`, formdata)
+                toast(res.data)
+                setEditpoststatus(false)
+                setSubmitstatus(!submitStatus)
+
+
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    }
+
+    useEffect(() => {
+        postsFetcher()
+    }, [submitStatus])
 
     return (
         <div className="allposts" style={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center", color: "wheat", backgroundColor: "black" }}>
@@ -30,20 +66,37 @@ export const PostsDisplayer = ({ values, posts, batmans }) => {
 
                         </div>
 
-                        <p>{post.Caption}</p>
-                        <img src={post.Img} alt="img" style={{ width: "90%", borderRadius: "15px" }} />
+                        {
+                            !editpoststatus ?
+                                <>
+                                    <p>{post.Caption}</p>
+                                    <img src={post.Img} alt="img" style={{ width: "90%", borderRadius: "15px" }} />
 
-                        <div className="actionbtns">
-                            {
-                                post.Owner == localStorage.getItem('Id') ?
-                                    <>
-                                        <button>✏️</button>
-                                        <button>🪣</button>
-                                    </>
-                                    :
-                                    <></>
-                            }
-                        </div>
+                                    <div className="actionbtns">
+                                        {
+                                            post.Owner == localStorage.getItem('Id') ?
+                                                <>
+                                                    <button onClick={() => {
+                                                        setNewcaption(post.Caption)
+                                                        setEditpoststatus(!editpoststatus)
+                                                    }
+                                                    } >✏️</button>
+                                                    <button>🪣</button>
+                                                </>
+                                                :
+                                                <></>
+                                        }
+                                    </div>
+
+                                </>
+                                :
+                                <>
+                                    <label htmlFor="newcaption">Caption</label>
+                                    <input type="text" id="newcaption" value={newcaption} onChange={e => setNewcaption(e.target.value)} />
+                                    <input type="file" required onChange={e => setFiile(e.target.files[0])} />
+                                    <button onClick={() => updatePost({ PostID: post._id, Caption: post.Caption })}>Update</button>
+                                </>
+                        }
 
                         <div className="actionbuttons" style={{ display: "flex", justifyContent: "space-evenly", marginTop: "5%", width: "80%" }}>
 

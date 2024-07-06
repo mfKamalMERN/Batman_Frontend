@@ -163,7 +163,7 @@ export const Home = () => {
 
     if (batmanid) {
         return (
-            <PostsDisplayer values={{ AddNewComment, setNewcomment, newcomment, FollowUnfollow, RemoveComment, editStatussetter, UpdateComment, setUpdatedcomment, updatedcomment, commentid, editstatus, postid, commentstatus, likes, likesstatus, viewComments, ViewLikesSetter, LikeUnlike }} posts={posts} batmans={allbatman} />
+            <PostsDisplayer values={{ AddNewComment, setNewcomment, newcomment, FollowUnfollow, RemoveComment, editStatussetter, UpdateComment, setUpdatedcomment, updatedcomment, commentid, editstatus, postid, commentstatus, likes, likesstatus, viewComments, ViewLikesSetter, LikeUnlike }} posts={posts} batmans={allbatman} postsFetcher={postsFetcher} />
         )
     }
 
@@ -182,7 +182,7 @@ export const Home = () => {
                     !datas.data.Token ?
                         tokenChecker()
                         :
-                        <PostsDisplayer values={{ AddNewComment, setNewcomment, newcomment, FollowUnfollow, RemoveComment, editStatussetter, UpdateComment, setUpdatedcomment, updatedcomment, commentid, editstatus, postid, commentstatus, likes, likesstatus, viewComments, ViewLikesSetter, LikeUnlike }} posts={datas.data.AllPosts} batmans={datas.data.AllBatman} />
+                        <PostsDisplayer values={{ AddNewComment, setNewcomment, newcomment, FollowUnfollow, RemoveComment, editStatussetter, UpdateComment, setUpdatedcomment, updatedcomment, commentid, editstatus, postid, commentstatus, likes, likesstatus, viewComments, ViewLikesSetter, LikeUnlike }} posts={datas.data.AllPosts} batmans={datas.data.AllBatman} postsFetcher={postsFetcher} />
                 }
             </div>
         )
