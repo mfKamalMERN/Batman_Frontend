@@ -2,7 +2,7 @@ import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 
-export const Navbar = ({ login }) => {
+export const Navbar = ({ login, lbatman }) => {
     const nav = useNavigate()
 
     if (!login) {

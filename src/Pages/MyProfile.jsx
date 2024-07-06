@@ -17,8 +17,10 @@ export const MyProfile = () => {
     const [newname, setNewname] = useState("")
     const [caption, setCaption] = useState("")
     const [file, setFile] = useState(null)
+    const [dp, setDp] = useState(null)
     const [lname, setLname] = useState("")
     const [freq, setFreq] = useState(false)
+    const [dpsetter, setDpsetter] = useState(false)
     const nav = useNavigate()
     const { bid } = useParams()
 
@@ -47,7 +49,7 @@ export const MyProfile = () => {
     useEffect(() => {
         tokenChecker()
 
-    }, [bid, newname, newpoststatus, freq])
+    }, [bid, newname, newpoststatus, freq, dpsetter])
 
     const MyFollowings = async () => {
         try {
@@ -180,7 +182,42 @@ export const MyProfile = () => {
 
                                         }
 
-                                        <td><img src={batman.DP} alt="" style={{ width: "40px", borderRadius: "80px", height: "auto" }} /><br /><button> ✏️DP</button><br /><button>✏️Pwd</button></td>
+                                        <td>
+                                            <img src={batman.DP} alt="" style={{ width: "40px", borderRadius: "80px", height: "auto" }} />
+                                            <br />
+                                            {
+                                                !dpsetter ?
+                                                    <button onClick={() => setDpsetter(!dpsetter)}> ✏️DP</button>
+                                                    :
+                                                    <>
+                                                        <input type="file" required onChange={(e) => setDp(e.target.files[0])} />
+
+                                                        <button onClick={() => {
+                                                            if (dp === null) toast("Please select an Image for Display Pic")
+                                                            else {
+                                                                const fd = new FormData()
+                                                                fd.append('file', dp)
+
+                                                                axios.put(`http://localhost:9000/uploaddp`, fd)
+                                                                    .then(res => {
+                                                                        toast(res.data.Msg)
+
+                                                                        setDpsetter(false)
+
+                                                                        localStorage.setItem('LoggedBatman', JSON.stringify(res.data.Lbatman))
+                                                                        
+                                                                        localStorage.setItem('LoggedBatman', JSON.stringify(res.data.Lbatman))
+
+
+                                                                    })
+                                                                    .catch(er => console.log(er))
+                                                            }
+                                                        }}>Update</button>
+                                                    </>
+                                            }
+                                            <br />
+                                            <button>✏️Pwd</button>
+                                        </td>
 
                                         <td><button onClick={() => nav(`/home/${batman._id}`)}>{batman.Posts.length}</button> <button onClick={() => setNewpoststatus(!newpoststatus)}>➕Post</button></td>
 

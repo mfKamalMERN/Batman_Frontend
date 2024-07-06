@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 
 export const TableDisplayer = ({ batmans, FollowUnfollow }) => {
     const nav = useNavigate()
-    
+
 
     // const FollowUnfollow = (batmantofollowid) => {
     //     axios.put(`http://localhost:9000/followbatman`, { batmantofollowid })
