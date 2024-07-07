@@ -71,13 +71,13 @@ export const Login = () => {
 
             <br />
 
-            <div className="logincontent" style={{ display: "flex", backgroundColor: "black", minHeight: "100vh", flexDirection: 'row', justifyContent: "space-evenly" }}>
+            <div className="logincontent" style={{ display: "flex", backgroundColor: "black", minHeight: "100vh", flexDirection: 'row', justifyContent: "space-around", marginTop: "125px" }}>
 
                 <div className="batmanimage">
-                    <img src="https://i.pinimg.com/originals/36/f5/92/36f592b8a986fe8ea161187cb580c0d5.jpg" alt="" style={{ height: "45%", marginTop: "16.5%", width: "92%", borderRadius: "15px" }} />
+                    <img src="https://wallpapers.com/images/hd/the-batman-2022-darkness-r489d3hmw1u9iwwa.jpg" alt="" style={{ height: "60%", width: "80%", borderRadius: "15px" }} />
                 </div>
 
-                <div className="form" style={{ border: "1px solid wheat", width: "35%", display: "flex", justifyContent: "center", color: "wheat", backgroundColor: 'black', marginTop: "10%", borderRadius: "15px", height: "60vh", alignItems: "center" }}>
+                <div className="form" style={{ border: "1px solid wheat", width: "35%", display: "flex", justifyContent: "center", color: "wheat", backgroundColor: 'black', marginTop: "0%", borderRadius: "15px", height: "60vh", alignItems: "center", marginRight: "5%" }}>
 
                     <form action="" onSubmit={SubmitForm} style={{ width: "100%" }}>
                         <h1>Login</h1>

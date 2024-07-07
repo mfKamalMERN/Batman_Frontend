@@ -57,7 +57,7 @@ export const Register = () => {
             <div className="registercontent" style={{ display: "flex", backgroundColor: "black", minHeight: "100vh", flexDirection: 'row', justifyContent: "space-evenly" }}>
 
                 <div className="batmanimage">
-                    <img src="https://i.pinimg.com/originals/36/f5/92/36f592b8a986fe8ea161187cb580c0d5.jpg" alt="" style={{ height: "45%", marginTop: "16.5%", width: "92%", borderRadius: "15px" }} />
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIYwTsrYZB9ofXO-rpZY8BBNtdNvoxGOh9XV_4WyoRlkXmU_8NqrLf7EWIJoY5OsTstUI&usqp=CAU" alt="" style={{ height: "55%", marginTop: "55.5%", width: "150%", borderRadius: "15px" }} />
                 </div>
 
                 <div className="rform" style={{ border: "1px solid wheat", width: "35%", display: "flex", justifyContent: "center", color: "wheat", backgroundColor: 'black', marginTop: "10%", borderRadius: "15px", height: "85%", alignItems: "center", }}>
