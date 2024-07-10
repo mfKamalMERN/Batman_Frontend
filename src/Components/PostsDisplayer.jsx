@@ -209,9 +209,9 @@ export const PostsDisplayer = ({ values, posts, batmans, postsFetcher }) => {
                                                     :
                                                     batmans.find((batman) => batman._id == cmnt.CommentedBy).Followers.includes(localStorage.getItem('Id')) ?
 
-                                                        <button onClick={() => FollowUnfollow(cmnt.CommentedBy)} style={{ marginRight: "8px", backgroundColor: "red", color: "white", borderRadius: "15px" }}>Unfollow</button>
+                                                        <button onClick={() => FollowUnfollow(cmnt.CommentedBy)} style={{ marginRight: "12px", backgroundColor: "red", color: "white", borderRadius: "15px" }}>Unfollow</button>
                                                         :
-                                                        <button onClick={() => FollowUnfollow(cmnt.CommentedBy)} style={{ marginRight: "8px", backgroundColor: "darkgreen", color: "wheat", borderRadius: "15px" }}>Follow</button>
+                                                        <button onClick={() => FollowUnfollow(cmnt.CommentedBy)} style={{ marginRight: "12px", backgroundColor: "darkgreen", color: "wheat", borderRadius: "15px" }}>Follow</button>
 
                                             }
                                         </div>

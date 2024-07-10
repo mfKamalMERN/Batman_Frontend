@@ -77,8 +77,6 @@ export const Home = () => {
         try {
             const res = await axios.get(`https://batman-backend.onrender.com/viewlikes/${pid}`)
             setLikes(res.data.Likes)
-
-
         } catch (error) {
             console.log(error);
         }
