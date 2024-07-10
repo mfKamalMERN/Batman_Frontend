@@ -48,10 +48,13 @@ export const Register = () => {
     }
 
     return (
-        <div className="main" style={{ backgroundColor: "black" }} >
+        <div className="main" style={{ backgroundColor: "black", marginTop: "20px" }} >
 
             <Navbar login={true} />
 
+            <br />
+            <br />
+            <br />
             <br />
 
             <div className="registercontent" style={{ display: "flex", backgroundColor: "black", minHeight: "100vh", flexDirection: 'row', justifyContent: "space-evenly" }}>
