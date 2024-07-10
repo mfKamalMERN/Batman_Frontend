@@ -44,7 +44,7 @@ export const PostsDisplayer = ({ values, posts, batmans, postsFetcher }) => {
     }, [submitStatus])
 
     return (
-        <div className="allposts" style={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center", color: "wheat", backgroundColor: "black" }}>
+        <div className="allposts" style={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center", color: "wheat", backgroundColor: "black", minWidth: "95%" }}>
 
             <Navbar />
             {
@@ -136,7 +136,7 @@ export const PostsDisplayer = ({ values, posts, batmans, postsFetcher }) => {
 
                                                     </div>
 
-                                                    <div className="followactions" style={{ display: "flex", alignItems: "center" }}>
+                                                    <div className="followactions" style={{ display: "flex", alignItems: "center", marginRight:"20px" }}>
 
                                                         {
                                                             v._id == localStorage.getItem('Id') ?
@@ -201,7 +201,7 @@ export const PostsDisplayer = ({ values, posts, batmans, postsFetcher }) => {
 
                                         </div>
 
-                                        <div className="followactions" style={{ display: "flex", alignItems: "center", marginRight: "1%" }}>
+                                        <div className="followactions" style={{ display: "flex", alignItems: "center", marginRight: "10px" }}>
 
                                             {
                                                 cmnt.CommentedBy == localStorage.getItem('Id') ?
