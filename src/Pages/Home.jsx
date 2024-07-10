@@ -35,7 +35,7 @@ export const Home = () => {
         if (!batmanid) dispatch(fetchPosts())
         else {
             try {
-                const res = await axios.get(`https://batman-backend.vercel.app/getbatmanposts/${batmanid}`)
+                const res = await axios.get(`https://batman-backend.onrender.com/getbatmanposts/${batmanid}`)
 
                 if (!res.data.Token) nav('/')
                 else {
@@ -75,7 +75,7 @@ export const Home = () => {
 
     const ViewLikes = async (pid) => {
         try {
-            const res = await axios.get(`https://batman-backend.vercel.app/viewlikes/${pid}`)
+            const res = await axios.get(`https://batman-backend.onrender.com/viewlikes/${pid}`)
             setLikes(res.data.Likes)
 
 
@@ -91,7 +91,7 @@ export const Home = () => {
     }
 
     const LikeUnlike = (pid) => {
-        axios.put(`https://batman-backend.vercel.app/likeunlikepost/${pid}`)
+        axios.put(`https://batman-backend.onrender.com/likeunlikepost/${pid}`)
             .then(res => {
                 toast(res.data.Msg)
                 ViewLikes(pid)
@@ -102,7 +102,7 @@ export const Home = () => {
     const AddNewComment = async (pid) => {
 
         try {
-            const res = await axios.post(`https://batman-backend.vercel.app/addcomment/${pid}`, { newcomment })
+            const res = await axios.post(`https://batman-backend.onrender.com/addcomment/${pid}`, { newcomment })
 
             toast(res.data.Msg)
             setNewcomment("")
@@ -124,7 +124,7 @@ export const Home = () => {
 
         if (updatedcomment.trim() === "") toast("Invalid Comment")
         else {
-            axios.put(`https://batman-backend.vercel.app/editcomment/${pid}`, { updatedcomment, cid })
+            axios.put(`https://batman-backend.onrender.com/editcomment/${pid}`, { updatedcomment, cid })
                 .then(res => {
                     toast(res.data.Msg)
                     setEditstatus(false)
@@ -139,7 +139,7 @@ export const Home = () => {
         const pid = values[0]
         const cid = values[1]
         try {
-            const res = await axios.put(`https://batman-backend.vercel.app/removecomment/${pid}`, { cid })
+            const res = await axios.put(`https://batman-backend.onrender.com/removecomment/${pid}`, { cid })
             toast(res.data.Msg)
             setRemovecommentstatus(!removecommentstatus)
 
@@ -151,7 +151,7 @@ export const Home = () => {
 
     const FollowUnfollow = async (batmantofollowid) => {
         try {
-            const res = await axios.put(`https://batman-backend.vercel.app/followbatman`, { batmantofollowid })
+            const res = await axios.put(`https://batman-backend.onrender.com/followbatman`, { batmantofollowid })
             setFollowstatus(!followstatus)
             toast(res.data.Msg)
 

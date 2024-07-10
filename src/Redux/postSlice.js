@@ -3,7 +3,7 @@ import axios from 'axios'
 
 export const fetchPosts = createAsyncThunk(`fetchPosts`, async () => {
     try {
-        const postsdata = await axios.get(`http://localhost:9000/getallposts`)
+        const postsdata = await axios.get(`https://batman-backend.onrender.com/getallposts`)
 
         return postsdata.data
 

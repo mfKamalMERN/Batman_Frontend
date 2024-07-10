@@ -46,7 +46,7 @@ export const Navbar = ({ login, lbatman }) => {
                             if (window.confirm('Log Out?')) {
 
                                 try {
-                                    const res = await axios.get(`http://localhost:9000/logoutbatman`)
+                                    const res = await axios.get(`https://batman-backend.onrender.com/logoutbatman`)
                                     toast(res.data.Msg)
                                     nav('/')
                                 } catch (error) {

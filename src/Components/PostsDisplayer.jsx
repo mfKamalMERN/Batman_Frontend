@@ -27,7 +27,7 @@ export const PostsDisplayer = ({ values, posts, batmans, postsFetcher }) => {
 
 
             try {
-                const res = await axios.put(`http://localhost:9000/editpost/${PostID}`, formdata)
+                const res = await axios.put(`https://batman-backend.onrender.com/editpost/${PostID}`, formdata)
                 toast(res.data)
                 setEditpoststatus(false)
                 setSubmitstatus(!submitStatus)
