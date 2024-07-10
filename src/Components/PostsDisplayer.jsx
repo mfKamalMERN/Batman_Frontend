@@ -50,7 +50,7 @@ export const PostsDisplayer = ({ values, posts, batmans, postsFetcher }) => {
             {
                 posts.map((post) => (
 
-                    <div className="card" style={{ border: "2px solid wheat", minWidth: "30%", display: "flex", flexDirection: "column", alignItems: "center", background: "black", color: "white", height: "auto", width: "auto", borderRadius: "15px", marginTop: "30%", maxWidth: "90%" }}>
+                    <div className="card" style={{ border: "2px solid wheat", minWidth: "30%", display: "flex", flexDirection: "column", alignItems: "center", background: "black", color: "white", height: "auto", width: "95%", borderRadius: "15px", marginTop: "30%", maxWidth: "100%" }}>
 
                         <div className="createdby" style={{ display: "flex", border: "1px solid wheat", width: "70%", justifyContent: "space-around", backgroundColor: "black", color: "wheat", borderRadius: "8px" }}>
 
@@ -136,16 +136,16 @@ export const PostsDisplayer = ({ values, posts, batmans, postsFetcher }) => {
 
                                                     </div>
 
-                                                    <div className="followactions" style={{ display: "flex", alignItems: "center", marginRight:"20px" }}>
+                                                    <div className="followactions" style={{ display: "flex", alignItems: "center", marginRight: "20px" }}>
 
                                                         {
                                                             v._id == localStorage.getItem('Id') ?
                                                                 <button onClick={() => nav(`/myprofile/${v._id}`)} style={{ color: "wheat", backgroundColor: "black", border: "1px solid wheat", borderRadius: "15px" }}>ℹ️</button>
                                                                 :
                                                                 batmans.find(batman => batman._id == v._id).Followers.includes(localStorage.getItem('Id')) ?
-                                                                    <button onClick={() => FollowUnfollow(v._id)} style={{ color: "wheat", backgroundColor: "black", border: "1px solid wheat", borderRadius: "15px" }}>Unfollow</button>
+                                                                    <button onClick={() => FollowUnfollow(v._id)} style={{ color: "wheat", backgroundColor: "black", border: "1px solid wheat", borderRadius: "15px", width: "auto" }}>Unfollow</button>
                                                                     :
-                                                                    <button onClick={() => FollowUnfollow(v._id)} style={{ color: "wheat", backgroundColor: "black", border: "1px solid wheat", borderRadius: "15px" }}>Follow</button>
+                                                                    <button onClick={() => FollowUnfollow(v._id)} style={{ color: "wheat", backgroundColor: "black", border: "1px solid wheat", borderRadius: "15px", width: "auto" }}>Follow</button>
 
                                                         }
                                                     </div>
