@@ -152,7 +152,7 @@ export const MyProfile = () => {
     }
 
     return (
-        <div className="all" style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
+        <div className="all" style={{ display: "flex", flexDirection: "column", justifyContent: "flex-start", background: "black", height: "150vh", color: 'wheat' }}>
 
             <Navbar />
 
@@ -160,7 +160,7 @@ export const MyProfile = () => {
 
             <div className="table" style={{ marginTop: "2%", display: "flex", justifyContent: "center" }}>
 
-                <table border={1} style={{ width: "40%" }}>
+                <table border={1} style={{ width: "50%" }}>
                     <thead>
                         <tr>
 
