@@ -95,6 +95,7 @@ export const PostsDisplayer = ({ values, posts, batmans, postsFetcher }) => {
                                     <input type="text" id="newcaption" value={newcaption} onChange={e => setNewcaption(e.target.value)} />
                                     <input type="file" required onChange={e => setFiile(e.target.files[0])} />
                                     <button onClick={() => updatePost({ PostID: post._id, Caption: post.Caption })}>Update</button>
+                                    <button onClick={() => setEditpoststatus(false)}>Cancel</button>
                                 </>
                         }
 
