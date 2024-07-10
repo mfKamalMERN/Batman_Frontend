@@ -29,7 +29,7 @@ export const Login = () => {
 
     useEffect(() => {
         tokenChecker()
-    }, [])
+    })
 
 
     const SubmitForm = (e) => {
