@@ -45,12 +45,14 @@ export const AllBatmans = () => {
 
             <br />
             <br />
+            <br />
+            <br />
             {/* <br /> */}
 
-            <div className="batmans" style={{ marginTop: "15%", display: "flex", flexDirection: "column", alignItems: "center", backgroundColor: "black" }}>
+            <div className="batmans" style={{ marginTop: "22%", display: "flex", flexDirection: "column", alignItems: "center", backgroundColor: "black" }}>
                 {
                     batmans.map(batman => (
-                        <div className="btmans" style={{ width: "60%" }}>
+                        <div className="btmans" style={{ width: "80%" }}>
 
                             <div className="singlebatman" style={{ display: "flex", background: "black", color: "wheat", justifyContent: "space-between", alignItems: 'center', border: "1px solid wheat", borderRadius: "15px" }}>
 
