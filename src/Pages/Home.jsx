@@ -26,7 +26,7 @@ export const Home = () => {
 
     const datas = useSelector((s) => s.posts)
 
-    const tokenChecker = () => 0
+    const tokenChecker = () => nav('/')
 
     axios.defaults.withCredentials = true
 
