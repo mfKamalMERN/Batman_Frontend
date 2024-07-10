@@ -10,7 +10,7 @@ export const Navbar = ({ login, lbatman }) => {
     }
 
     return (
-        <div className="navbar" style={{ display: "flex", justifyContent: "center", backgroundColor: "black", color: "wheat", border: "1px solid wheat", width: "100%", position: "fixed", top: "0%", alignItems: "center", minHeight: "10%", height: "11%", marginBottom:"100px" }}>
+        <div className="navbar" style={{ display: "flex", justifyContent: "center", backgroundColor: "black", color: "wheat", border: "1px solid wheat", width: "100%", position: "fixed", top: "0%", alignItems: "center", minHeight: "10%", height: "11%", marginBottom: "150px" }}>
 
             {
                 login ?
