@@ -11,7 +11,7 @@ export const AllBatmans = () => {
     const nav = useNavigate()
 
     const tokenChecker = () => {
-        axios.get(`http://localhost:9000/allbatmans`)
+        axios.get(`https://batman-backend.vercel.app/allbatmans`)
             .then(res => {
                 if (res.data.Token) setBatmans(res.data.Allbatmans)
 
@@ -28,7 +28,7 @@ export const AllBatmans = () => {
 
     const FollowUnfollow = async (batmantofollowid) => {
         try {
-            const res = await axios.put(`http://localhost:9000/followbatman`, { batmantofollowid })
+            const res = await axios.put(`https://batman-backend.vercel.app/followbatman`, { batmantofollowid })
 
             toast(res.data.Msg)
             setFollowstatus(!followstatus)

@@ -14,7 +14,7 @@ export const Login = () => {
     axios.defaults.withCredentials = true
     const tokenChecker = async () => {
         try {
-            const res = await axios.get(`http://localhost:9000/getallposts`)
+            const res = await axios.get(`https://batman-backend.vercel.app/getallposts`)
             if (!res.data.Token) {
                 localStorage.clear()
                 nav('/')
@@ -35,7 +35,7 @@ export const Login = () => {
     const SubmitForm = (e) => {
         e.preventDefault()
 
-        axios.post(`http://localhost:9000/loginbatman`, { email, pwd })
+        axios.post(`https://batman-backend.vercel.app/loginbatman`, { email, pwd })
             .then(res => {
                 if (res.data.ValidationError) {
                     res.data.ActError.map((v) => toast(v.msg))

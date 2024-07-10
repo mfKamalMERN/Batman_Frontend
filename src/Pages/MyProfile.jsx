@@ -30,7 +30,7 @@ export const MyProfile = () => {
 
     axios.defaults.withCredentials = true
     const tokenChecker = () => {
-        axios.get(`http://localhost:9000/getbatmandetails/${bid}`)
+        axios.get(`https://batman-backend.vercel.app/getbatmandetails/${bid}`)
             .then(res => {
                 if (!res.data.Token) {
                     localStorage.clear()
@@ -60,7 +60,7 @@ export const MyProfile = () => {
             setFollowingsstatus(!followingsstatus)
             setFollowersstatus(false)
             setNewpoststatus(false)
-            const res = await axios.get(`http://localhost:9000/getmyfollowings/${batmanid}`)
+            const res = await axios.get(`https://batman-backend.vercel.app/getmyfollowings/${batmanid}`)
             setMyfollowings(res.data.Followings)
 
         } catch (error) {
@@ -73,7 +73,7 @@ export const MyProfile = () => {
             setFollowingsstatus(false)
             setNewpoststatus(false)
             setFollowersstatus(!followersstatus)
-            const res = await axios.get(`http://localhost:9000/getmyfollowers/${bid}`)
+            const res = await axios.get(`https://batman-backend.vercel.app/getmyfollowers/${bid}`)
             setMyfollowers(res.data.Followers)
 
         } catch (error) {
@@ -93,7 +93,7 @@ export const MyProfile = () => {
         if (newname.trim() === "") toast(`Invalid Name`)
 
         else {
-            axios.put(`http://localhost:9000/editname`, { newname })
+            axios.put(`https://batman-backend.vercel.app/editname`, { newname })
                 .then(res => {
                     toast(res.data.Msg)
                     setNewname("")
@@ -113,7 +113,7 @@ export const MyProfile = () => {
             formdata.append('caption', caption)
 
             try {
-                const res = await axios.post(`http://localhost:9000/createpost`, formdata)
+                const res = await axios.post(`https://batman-backend.vercel.app/createpost`, formdata)
                 toast(res.data.Msg)
                 setNewpoststatus(false)
 
@@ -125,7 +125,7 @@ export const MyProfile = () => {
     }
 
     const FollowUnfollow = (batmantofollowid) => {
-        axios.put(`http://localhost:9000/followbatman`, { batmantofollowid })
+        axios.put(`https://batman-backend.vercel.app/followbatman`, { batmantofollowid })
             .then(res => {
                 toast(res.data.Msg)
                 setFreq(!freq)
@@ -136,7 +136,7 @@ export const MyProfile = () => {
     const editPwd = e => {
         e.preventDefault()
 
-        axios.put(`http://localhost:9000/editpwd`, { oldpwd, newpwd, confirmpwd })
+        axios.put(`https://batman-backend.vercel.app/editpwd`, { oldpwd, newpwd, confirmpwd })
             .then(res => {
                 if (!res.data.Updated) toast(res.data.Msg)
                 else {

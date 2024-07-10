@@ -15,7 +15,7 @@ export const Register = () => {
     axios.defaults.withCredentials = true
     const tokenChecker = async () => {
         try {
-            const res = await axios.get(`http://localhost:9000/getallposts`)
+            const res = await axios.get(`https://batman-backend.vercel.app/getallposts`)
             if (!res.data.Token) {
                 localStorage.clear()
 
@@ -35,7 +35,7 @@ export const Register = () => {
     const handleSubmit = e => {
         e.preventDefault()
 
-        axios.post(`http://localhost:9000/registerbatman`, { name, age, email, pwd })
+        axios.post(`https://batman-backend.vercel.app/registerbatman`, { name, age, email, pwd })
             .then(res => {
                 if (res.data.ValidationError) res.data.ActError.map((e) => toast(e.msg))
                 else {
