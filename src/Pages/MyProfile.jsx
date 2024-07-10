@@ -12,6 +12,10 @@ export const MyProfile = () => {
     const [followingsstatus, setFollowingsstatus] = useState(false)
     const [followersstatus, setFollowersstatus] = useState(false)
     const [nameupdatestatus, setNameupdatestatus] = useState(false)
+    const [pwdstatus, setPwdstatus] = useState(false)
+    const [oldpwd, setOldpwd] = useState("")
+    const [newpwd, setNewpwd] = useState("")
+    const [confirmpwd, setConfirmpwd] = useState("")
     const [newpoststatus, setNewpoststatus] = useState(false)
     const [batmanid, setBatmanid] = useState(null)
     const [newname, setNewname] = useState("")
@@ -129,6 +133,24 @@ export const MyProfile = () => {
             .catch(er => console.log(er))
     }
 
+    const editPwd = e => {
+        e.preventDefault()
+
+        axios.put(`http://localhost:9000/editpwd`, { oldpwd, newpwd, confirmpwd })
+            .then(res => {
+                if (!res.data.Updated) toast(res.data.Msg)
+                else {
+                    toast(res.data.Msg)
+                    setPwdstatus(false)
+                    setOldpwd("")
+                    setNewpwd("")
+                    setConfirmpwd("")
+                }
+
+            })
+            .catch(er => console.log(er))
+    }
+
     return (
         <div className="all" style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
 
@@ -205,7 +227,7 @@ export const MyProfile = () => {
                                                                         setDpsetter(false)
 
                                                                         localStorage.setItem('LoggedBatman', JSON.stringify(res.data.Lbatman))
-                                                                        
+
                                                                         localStorage.setItem('LoggedBatman', JSON.stringify(res.data.Lbatman))
 
 
@@ -216,7 +238,23 @@ export const MyProfile = () => {
                                                     </>
                                             }
                                             <br />
-                                            <button>✏️Pwd</button>
+                                            {
+                                                !pwdstatus ?
+                                                    <button onClick={() => setPwdstatus(!pwdstatus)}>✏️Pwd</button>
+                                                    :
+                                                    <form action="" onSubmit={editPwd}>
+                                                        <label htmlFor="oldpwd">Old Pwd</label>
+                                                        <input type="password" value={oldpwd} onChange={(e) => setOldpwd(e.target.value)} id="oldpwd" />
+                                                        <br />
+                                                        <label htmlFor="newpwd">New Pwd</label>
+                                                        <input type="password" value={newpwd} onChange={e => setNewpwd(e.target.value)} id="newpwd" />
+                                                        <br />
+                                                        <label htmlFor="confirmpwd">Confirm Pwd </label>
+                                                        <input type="password" value={confirmpwd} onChange={e => setConfirmpwd(e.target.value)} id="confirmpwd" />
+                                                        <button type="submit">Update</button>
+                                                    </form>
+
+                                            }
                                         </td>
 
                                         <td><button onClick={() => nav(`/home/${batman._id}`)}>{batman.Posts.length}</button> <button onClick={() => setNewpoststatus(!newpoststatus)}>➕Post</button></td>
