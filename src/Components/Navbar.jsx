@@ -6,7 +6,7 @@ export const Navbar = ({ login, lbatman }) => {
     const nav = useNavigate()
 
     if (!login) {
-        var lbatman = JSON.parse(localStorage.getItem('LoggedBatman'))
+        var lbatman = JSON.parse(localStorage.getItem('LoggedBatman'))||[]
     }
 
     return (
@@ -36,8 +36,8 @@ export const Navbar = ({ login, lbatman }) => {
 
                         <div onClick={() => nav(`/myprofile/${localStorage.getItem('Id')}`)} className="batmandetails" style={{ display: "flex", marginLeft: "70%", alignItems: "center", flexDirection: "column", marginRight: "15%" }}>
 
-                            <img src={lbatman[0].DP} alt="" style={{ width: "25px", borderRadius: "15px", height: "70%", cursor: "pointer" }} />
-                            <h3 style={{ fontSize: "11px" }}>{lbatman[0].Name}</h3>
+                            <img src={lbatman[0]?.DP} alt="" style={{ width: "25px", borderRadius: "15px", height: "70%", cursor: "pointer" }} />
+                            <h3 style={{ fontSize: "11px" }}>{lbatman[0]?.Name}</h3>
 
                         </div>
                         <button onClick={async () => {
