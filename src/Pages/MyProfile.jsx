@@ -156,7 +156,7 @@ export const MyProfile = () => {
 
             <Navbar />
 
-            <h2 style={{ marginTop: "150px" }}>{lname}'s' Profile</h2>
+            <h2 style={{ marginTop: "150px" }}>{lname}'s Profile</h2>
 
             <div className="table" style={{ marginTop: "2%", display: "flex", justifyContent: "center" }}>
 
