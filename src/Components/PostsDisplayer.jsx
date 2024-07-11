@@ -72,7 +72,7 @@ export const PostsDisplayer = ({ values, posts, batmans, postsFetcher }) => {
                             !editpoststatus ?
                                 <>
                                     <p>{post.Caption}</p>
-                                    <img src={post.Img} alt="img" style={{ width: "90%", borderRadius: "15px" }} />
+                                    <img src={post.Img} alt="" style={{ width: "90%", borderRadius: "15px" }} />
 
                                     <div className="actionbtns">
                                         {
