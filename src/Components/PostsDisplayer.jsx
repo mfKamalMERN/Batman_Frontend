@@ -61,7 +61,7 @@ export const PostsDisplayer = ({ values, posts, batmans, postsFetcher }) => {
 
                                 <p>{batmans.find((batman) => batman._id == post.Owner).Name}</p>
 
-                                <img src={batmans.find((batman) => batman._id == post.Owner).DP} alt="" style={{ width: "19px" }} />
+                                <img src={batmans.find((batman) => batman._id == post.Owner).DP} alt="" style={{ width: "28px", borderRadius:"50%" }} />
 
                             </div>
 
