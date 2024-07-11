@@ -35,7 +35,7 @@ export const TableDisplayer = ({ batmans, FollowUnfollow }) => {
 
                                 <td>{batman?.Name}</td>
 
-                                <td onClick={() => nav(`/myprofile/${batman?._id}`)}><img src={batman?.DP} alt="" style={{ width: "25%", borderRadius: "80px", marginTop: "10%" }} /></td>
+                                <td onClick={() => nav(`/myprofile/${batman?._id}`)}><img src={batman?.DP} alt="" style={{ width: "37px", borderRadius: "80px", marginTop: "10%" }} /></td>
 
                                 <td><button onClick={() => nav(`/home/${batman?._id}`)} style={{ backgroundColor: "darkgreen", color: 'wheat', borderRadius: "15px" }}>{batman?.Posts.length}</button></td>
 
