@@ -3,6 +3,7 @@ import { Navbar } from "./Navbar"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { toast } from "react-toastify"
+import './Card.css'
 
 export const PostsDisplayer = ({ values, posts, batmans, postsFetcher }) => {
 
@@ -51,7 +52,7 @@ export const PostsDisplayer = ({ values, posts, batmans, postsFetcher }) => {
             {
                 posts.map((post) => (
 
-                    <div className="card" style={{ border: "2px solid wheat", minWidth: "30%", display: "flex", flexDirection: "column", alignItems: "center", background: "black", color: "white", height: "auto", width: "370px", borderRadius: "15px", marginTop: "200px", maxWidth: "100%" }}>
+                    <div className="card" >
 
                         <div className="createdby" style={{ display: "flex", border: "1px solid wheat", width: "70%", justifyContent: "space-around", backgroundColor: "black", color: "wheat", borderRadius: "8px", alignItems: "center" }}>
 
