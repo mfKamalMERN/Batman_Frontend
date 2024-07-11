@@ -56,7 +56,7 @@ export const AllBatmans = () => {
 
                             <div className="singlebatman" style={{ display: "flex", background: "black", color: "wheat", justifyContent: "space-between", alignItems: 'center', border: "1px solid wheat", borderRadius: "15px" }}>
 
-                                <div className="btmaninfo" style={{ display: "flex", color: "wheat", alignItems: "center", height: "55px", marginLeft: "3%" }}>
+                                <div onClick={() => nav(`/myprofile/${batman._id}`)} className="btmaninfo" style={{ display: "flex", color: "wheat", alignItems: "center", height: "55px", marginLeft: "3%" }}>
                                     <img src={batman.DP} alt="" style={{ width: "38%", borderRadius: '180px', height: "50px" }} />
                                     <p>{batman.Name}</p>
                                 </div>
