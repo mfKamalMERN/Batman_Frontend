@@ -44,9 +44,9 @@ export const TableDisplayer = ({ batmans, FollowUnfollow }) => {
                                 <td>{batman?.Followers.length}</td>
                                 {
                                     batman?.Followers.includes(localStorage.getItem('Id')) ?
-                                        <td><button onClick={() => FollowUnfollow(batman?._id)} style={{ backgroundColor: "darkred", color: "wheat", borderRadius: '15px' }}>Unfollow</button></td>
+                                        <td><button onClick={() => FollowUnfollow(batman._id)} style={{ backgroundColor: "darkred", color: "wheat", borderRadius: '15px' }}>Unfollow</button></td>
                                         :
-                                        <td><button onClick={() => FollowUnfollow(batman?._id)} style={{ backgroundColor: "darkgreen", color: "wheat", borderRadius: '15px' }}>Follow</button></td>
+                                        <td><button onClick={() => FollowUnfollow(batman._id)} style={{ backgroundColor: "darkgreen", color: "wheat", borderRadius: '15px' }}>Follow</button></td>
                                 }
 
                             </tr>

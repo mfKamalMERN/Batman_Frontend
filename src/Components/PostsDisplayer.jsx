@@ -51,7 +51,7 @@ export const PostsDisplayer = ({ values, posts, batmans, postsFetcher }) => {
             {
                 posts.map((post) => (
 
-                    <div className="card" style={{ border: "2px solid wheat", minWidth: "30%", display: "flex", flexDirection: "column", alignItems: "center", background: "black", color: "white", height: "auto", width: "95%", borderRadius: "15px", marginTop: "200px", maxWidth: "100%" }}>
+                    <div className="card" style={{ border: "2px solid wheat", minWidth: "30%", display: "flex", flexDirection: "column", alignItems: "center", background: "black", color: "white", height: "auto", width: "350px", borderRadius: "15px", marginTop: "200px", maxWidth: "100%" }}>
 
                         <div className="createdby" style={{ display: "flex", border: "1px solid wheat", width: "70%", justifyContent: "space-around", backgroundColor: "black", color: "wheat", borderRadius: "8px", alignItems: "center" }}>
 
