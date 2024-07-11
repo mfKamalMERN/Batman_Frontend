@@ -47,10 +47,11 @@ export const PostsDisplayer = ({ values, posts, batmans, postsFetcher }) => {
         <div className="allposts" style={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center", color: "wheat", backgroundColor: "black", minWidth: "95%", minHeight: "100vh" }}>
 
             <Navbar />
+            
             {
                 posts.map((post) => (
 
-                    <div className="card" style={{ border: "2px solid wheat", minWidth: "30%", display: "flex", flexDirection: "column", alignItems: "center", background: "black", color: "white", height: "auto", width: "95%", borderRadius: "15px", marginTop: "30%", maxWidth: "100%" }}>
+                    <div className="card" style={{ border: "2px solid wheat", minWidth: "30%", display: "flex", flexDirection: "column", alignItems: "center", background: "black", color: "white", height: "auto", width: "95%", borderRadius: "15px", marginTop: "200px", maxWidth: "100%" }}>
 
                         <div className="createdby" style={{ display: "flex", border: "1px solid wheat", width: "70%", justifyContent: "space-around", backgroundColor: "black", color: "wheat", borderRadius: "8px" }}>
 
@@ -229,6 +230,7 @@ export const PostsDisplayer = ({ values, posts, batmans, postsFetcher }) => {
 
                     </div>
                 ))
+                
             }
 
         </div>
