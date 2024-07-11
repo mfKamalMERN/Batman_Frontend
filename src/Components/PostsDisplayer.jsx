@@ -51,7 +51,7 @@ export const PostsDisplayer = ({ values, posts, batmans, postsFetcher }) => {
             {
                 posts.map((post) => (
 
-                    <div className="card" style={{ border: "2px solid wheat", minWidth: "30%", display: "flex", flexDirection: "column", alignItems: "center", background: "black", color: "white", height: "auto", width: "350px", borderRadius: "15px", marginTop: "200px", maxWidth: "100%" }}>
+                    <div className="card" style={{ border: "2px solid wheat", minWidth: "30%", display: "flex", flexDirection: "column", alignItems: "center", background: "black", color: "white", height: "auto", width: "370px", borderRadius: "15px", marginTop: "200px", maxWidth: "100%" }}>
 
                         <div className="createdby" style={{ display: "flex", border: "1px solid wheat", width: "70%", justifyContent: "space-around", backgroundColor: "black", color: "wheat", borderRadius: "8px", alignItems: "center" }}>
 
@@ -61,7 +61,7 @@ export const PostsDisplayer = ({ values, posts, batmans, postsFetcher }) => {
 
                                 <p>{batmans.find((batman) => batman._id == post.Owner).Name}</p>
 
-                                <img src={batmans.find((batman) => batman._id == post.Owner).DP} alt="" style={{ width: "28px", borderRadius:"50%" }} />
+                                <img src={batmans.find((batman) => batman._id == post.Owner).DP} alt="" style={{ width: "28px", borderRadius: "50%" }} />
 
                             </div>
 
