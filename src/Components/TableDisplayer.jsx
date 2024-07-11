@@ -37,16 +37,16 @@ export const TableDisplayer = ({ batmans, FollowUnfollow }) => {
 
                                 <td onClick={() => nav(`/myprofile/${batman?._id}`)}><img src={batman?.DP} alt="" style={{ width: "25%", borderRadius: "80px", marginTop: "10%" }} /></td>
 
-                                <td><button onClick={() => nav(`/home/${batman?._id}`)}>{batman?.Posts.length}</button></td>
+                                <td><button onClick={() => nav(`/home/${batman?._id}`)} style={{ backgroundColor: "darkgreen", color: 'wheat', borderRadius: "15px" }}>{batman?.Posts.length}</button></td>
 
                                 <td>{batman?.Following.length}</td>
 
                                 <td>{batman?.Followers.length}</td>
                                 {
                                     batman?.Followers.includes(localStorage.getItem('Id')) ?
-                                        <td><button onClick={() => FollowUnfollow(batman?._id)}>Unfollow</button></td>
+                                        <td><button onClick={() => FollowUnfollow(batman?._id)} style={{ backgroundColor: "darkred", color: "wheat", borderRadius: '15px' }}>Unfollow</button></td>
                                         :
-                                        <td><button onClick={() => FollowUnfollow(batman?._id)}>Follow</button></td>
+                                        <td><button onClick={() => FollowUnfollow(batman?._id)} style={{ backgroundColor: "darkgreen", color: "wheat", borderRadius: '15px' }}>Follow</button></td>
                                 }
 
                             </tr>
