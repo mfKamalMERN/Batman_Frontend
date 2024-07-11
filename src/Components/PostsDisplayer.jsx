@@ -44,7 +44,7 @@ export const PostsDisplayer = ({ values, posts, batmans, postsFetcher }) => {
     }, [submitStatus])
 
     return (
-        <div className="allposts" style={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center", color: "wheat", backgroundColor: "black", minWidth: "95%" }}>
+        <div className="allposts" style={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center", color: "wheat", backgroundColor: "black", minWidth: "95%",minHeight:"100vh" }}>
 
             <Navbar />
             {

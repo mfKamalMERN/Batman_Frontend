@@ -174,7 +174,7 @@ export const Home = () => {
     else {
         console.log(datas.data);
         return (
-            <div className="home" style={{ backgroundColor: "black", minHeight: "150vh" }}>
+            <div className="home" style={{ backgroundColor: "black", minHeight: "190vh" }}>
 
                 {
                     !datas.data.Token ?
