@@ -29,24 +29,24 @@ export const TableDisplayer = ({ batmans, FollowUnfollow }) => {
 
                 <tbody>
                     {
-                        batmans.map((batman) => (
+                        batmans?.map((batman) => (
 
-                            <tr key={batman._id}>
+                            <tr key={batman?._id}>
 
-                                <td>{batman.Name}</td>
+                                <td>{batman?.Name}</td>
 
-                                <td onClick={() => nav(`/myprofile/${batman._id}`)}><img src={batman.DP} alt="" style={{ width: "25%", borderRadius: "80px", marginTop: "10%" }} /></td>
+                                <td onClick={() => nav(`/myprofile/${batman?._id}`)}><img src={batman?.DP} alt="" style={{ width: "25%", borderRadius: "80px", marginTop: "10%" }} /></td>
 
-                                <td><button onClick={() => nav(`/home/${batman._id}`)}>{batman.Posts.length}</button></td>
+                                <td><button onClick={() => nav(`/home/${batman?._id}`)}>{batman?.Posts.length}</button></td>
 
-                                <td>{batman.Following.length}</td>
+                                <td>{batman?.Following.length}</td>
 
-                                <td>{batman.Followers.length}</td>
+                                <td>{batman?.Followers.length}</td>
                                 {
-                                    batman.Followers.includes(localStorage.getItem('Id')) ?
-                                        <td><button onClick={() => FollowUnfollow(batman._id)}>Unfollow</button></td>
+                                    batman?.Followers.includes(localStorage.getItem('Id')) ?
+                                        <td><button onClick={() => FollowUnfollow(batman?._id)}>Unfollow</button></td>
                                         :
-                                        <td><button onClick={() => FollowUnfollow(batman._id)}>Follow</button></td>
+                                        <td><button onClick={() => FollowUnfollow(batman?._id)}>Follow</button></td>
                                 }
 
                             </tr>
