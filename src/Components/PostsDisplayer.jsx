@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import { toast } from "react-toastify"
 import './Card.css'
-import { saveAs } from 'file-saver';
+// import { saveAs } from 'file-saver';
 
 export const PostsDisplayer = ({ values, posts, batmans, postsFetcher }) => {
 

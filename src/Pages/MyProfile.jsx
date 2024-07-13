@@ -195,7 +195,7 @@ export const MyProfile = () => {
                                     <tr>
                                         {
                                             !nameupdatestatus ?
-                                                <td>{batman.Name}<button onClick={() => nameUpdate(batman.Name)}> ✏️Name</button></td>
+                                                <td>{batman.Name}<button onClick={() => nameUpdate(batman.Name)}> ✏️</button></td>
                                                 :
                                                 <>
                                                     <input type="text" value={newname} onChange={e => setNewname(e.target.value)} />

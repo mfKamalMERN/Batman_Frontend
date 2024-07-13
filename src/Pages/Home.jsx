@@ -64,6 +64,9 @@ export const Home = () => {
 
     useEffect(() => {
         postsFetcher()
+        setCommentstatus(true)
+        if (!commentstatus) setLikesstatus(true)
+        else setLikesstatus(false)
     }, [likes, newcomment, updatedcomment, removecommentstatus, followstatus, posts, datas?.data?.AllPosts])
 
     const ViewLikesSetter = (pid) => {
