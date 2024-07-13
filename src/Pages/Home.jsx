@@ -65,8 +65,8 @@ export const Home = () => {
     useEffect(() => {
         postsFetcher()
         // setCommentstatus(false)
-        if (!commentstatus) setLikesstatus(true)
-        else setLikesstatus(false)
+        // if (!commentstatus) setLikesstatus(true)
+        // else setLikesstatus(false)
     }, [likes, newcomment, updatedcomment, removecommentstatus, followstatus, posts, datas?.data?.AllPosts])
 
     const ViewLikesSetter = (pid) => {
@@ -87,7 +87,7 @@ export const Home = () => {
 
     const viewComments = (pid) => {
         setLikesstatus(false)
-        setCommentstatus(!commentstatus)
+        setCommentstatus(true)
         setPostid(pid)
     }
 
