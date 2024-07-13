@@ -151,6 +151,16 @@ export const MyProfile = () => {
             .catch(er => console.log(er))
     }
 
+    // const deleteAccount = () => {
+    //     axios.delete(`https://batman-backend.onrender.com/deleteaccount`)
+    //         .then(res => {
+    //             toast(res.data.Msg)
+    //             nav('/')
+    //             localStorage.clear()
+    //         })
+    //         .catch(e => console.log(e))
+    // }
+
     return (
         <div className="all" style={{ display: "flex", flexDirection: "column", justifyContent: "flex-start", background: "black", height: "150vh", color: 'wheat', alignItems: "center" }}>
 
@@ -321,6 +331,13 @@ export const MyProfile = () => {
                         </form>
                     </div>
             }
+            {/* {
+                bid == localStorage.getItem('Id')
+                    ?
+                    <button onClick={() => deleteAccount()} style={{ backgroundColor: "darkred", color: "wheat", borderRadius: "15px" }}>Delete Account</button>
+                    :
+                    <></>
+            } */}
 
         </div>
     )
