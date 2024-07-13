@@ -58,16 +58,16 @@ export const PostsDisplayer = ({ values, posts, batmans, postsFetcher }) => {
 
     const ViewImage = (url) => {
 
-        console.log(url);
-        const bloburl = URL.createObjectURL(new Blob([url],{type:"application/pdf"}))
-        console.log(bloburl);
-        saveAs(url, 'image.pdf')
-        const a = document.createElement('a')
-        a.href = url
-        a.download = 'img.JPG'
-        document.body.appendChild(a)
-        a.click()
-
+        // console.log(url);
+        // const bloburl = URL.createObjectURL(new Blob([url],{type:"application/pdf"}))
+        // console.log(bloburl);
+        // saveAs(url, 'image.pdf')
+        // const a = document.createElement('a')
+        // a.href = url
+        // a.download = 'img.JPG'
+        // document.body.appendChild(a)
+        // a.click()
+        saveAs(url, 'image.JPG')
     }
 
 
