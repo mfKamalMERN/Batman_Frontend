@@ -84,14 +84,14 @@ export const Login = () => {
 
                         <label htmlFor="email">Email</label>
                         <br />
-                        <input type="email" id="email" value={email} onChange={e => setEmail(e.target.value)} style={{ width: "80%", backgroundColor: "black", color: "wheat", borderRadius: "15px" }} />
+                        <input type="email" id="email" value={email} onChange={e => setEmail(e.target.value)} style={{ width: "80%", backgroundColor: "black", color: "wheat", borderRadius: "15px", textAlign: "center" }} />
 
                         <br />
                         <br />
 
                         <label htmlFor="pwd">Password</label>
                         <br />
-                        <input type="password" id="pwd" value={pwd} onChange={e => setPwd(e.target.value)} style={{ width: "80%", backgroundColor: "black", color: "wheat", borderRadius: "15px" }} />
+                        <input type="password" id="pwd" value={pwd} onChange={e => setPwd(e.target.value)} style={{ width: "80%", backgroundColor: "black", color: "wheat", borderRadius: "15px", textAlign: "center" }} />
 
                         <br />
                         <br />

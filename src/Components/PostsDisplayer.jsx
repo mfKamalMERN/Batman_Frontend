@@ -13,6 +13,7 @@ export const PostsDisplayer = ({ values, posts, batmans, postsFetcher }) => {
     const [file, setFiile] = useState(null)
     const [newcaption, setNewcaption] = useState("")
     const [submitStatus, setSubmitstatus] = useState(false)
+    const [epid, setEpid] = useState("")
 
     const nav = useNavigate()
 
@@ -44,6 +45,12 @@ export const PostsDisplayer = ({ values, posts, batmans, postsFetcher }) => {
         postsFetcher()
     }, [submitStatus])
 
+    const deletePost = (pid) => {
+        axios.delete(`https://batman-backend.onrender.com/removepost/${pid}`)
+            .then(res => toast(res.data.Msg))
+            .catch(err => console.log(err))
+    }
+
     return (
         <div className="allposts" style={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center", color: "wheat", backgroundColor: "black", minWidth: "95%", minHeight: "100vh" }}>
 
@@ -69,7 +76,17 @@ export const PostsDisplayer = ({ values, posts, batmans, postsFetcher }) => {
                         </div>
 
                         {
-                            !editpoststatus ?
+                            editpoststatus && (post._id == epid) ?
+                                <>
+
+
+                                    <label htmlFor="newcaption">Caption</label>
+                                    <input type="text" id="newcaption" value={newcaption} onChange={e => setNewcaption(e.target.value)} />
+                                    <input type="file" required onChange={e => setFiile(e.target.files[0])} />
+                                    <button onClick={() => updatePost({ PostID: post._id, Caption: post.Caption })}>Update</button>
+                                    <button onClick={() => setEditpoststatus(false)}>Cancel</button>
+                                </>
+                                :
                                 <>
                                     <p>{post.Caption}</p>
                                     <img src={post.Img} alt="" style={{ width: "90%", borderRadius: "15px" }} />
@@ -80,24 +97,16 @@ export const PostsDisplayer = ({ values, posts, batmans, postsFetcher }) => {
                                                 <>
                                                     <button onClick={() => {
                                                         setNewcaption(post.Caption)
+                                                        setEpid(post._id)
                                                         setEditpoststatus(!editpoststatus)
                                                     }
                                                     } >✏️</button>
-                                                    <button>🪣</button>
+                                                    <button onClick={() => deletePost(post._id)}>🪣</button>
                                                 </>
                                                 :
                                                 <></>
                                         }
                                     </div>
-
-                                </>
-                                :
-                                <>
-                                    <label htmlFor="newcaption">Caption</label>
-                                    <input type="text" id="newcaption" value={newcaption} onChange={e => setNewcaption(e.target.value)} />
-                                    <input type="file" required onChange={e => setFiile(e.target.files[0])} />
-                                    <button onClick={() => updatePost({ PostID: post._id, Caption: post.Caption })}>Update</button>
-                                    <button onClick={() => setEditpoststatus(false)}>Cancel</button>
                                 </>
                         }
 
