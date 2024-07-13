@@ -142,9 +142,7 @@ export const PostsDisplayer = ({ values, posts, batmans, postsFetcher }) => {
 
                         </div>
                         {
-                            !likesstatus && post._id == postid ?
-                                <></>
-                                :
+                            likesstatus && post._id == postid ?
                                 post.Likes.length == 0 ?
                                     <>No Likes on this post yet</>
                                     :
@@ -181,6 +179,9 @@ export const PostsDisplayer = ({ values, posts, batmans, postsFetcher }) => {
                                             ))
                                         }
                                     </>
+                                :
+                                <></>
+
                         }
 
                         {
