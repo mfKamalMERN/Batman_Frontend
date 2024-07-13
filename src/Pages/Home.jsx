@@ -64,7 +64,7 @@ export const Home = () => {
 
     useEffect(() => {
         postsFetcher()
-        setCommentstatus(true)
+        // setCommentstatus(false)
         if (!commentstatus) setLikesstatus(true)
         else setLikesstatus(false)
     }, [likes, newcomment, updatedcomment, removecommentstatus, followstatus, posts, datas?.data?.AllPosts])
@@ -94,8 +94,8 @@ export const Home = () => {
     const LikeUnlike = (pid) => {
         axios.put(`https://batman-backend.onrender.com/likeunlikepost/${pid}`)
             .then(res => {
-                toast(res.data.Msg)
                 ViewLikes(pid)
+                // toast(res.data.Msg)
             })
             .catch(er => console.log(er))
     }
