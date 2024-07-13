@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import { toast } from "react-toastify"
 import './Card.css'
+import { saveAs } from 'file-saver';
 
 export const PostsDisplayer = ({ values, posts, batmans, postsFetcher }) => {
 
@@ -45,11 +46,26 @@ export const PostsDisplayer = ({ values, posts, batmans, postsFetcher }) => {
         postsFetcher()
     }, [submitStatus])
 
+
     const deletePost = (pid) => {
-        axios.delete(`https://batman-backend.onrender.com/removepost/${pid}`)
-            .then(res => toast(res.data.Msg))
-            .catch(err => console.log(err))
+
+        if (window.confirm("Removing this post...")) {
+            axios.delete(`https://batman-backend.onrender.com/removepost/${pid}`)
+                .then(res => toast(res.data.Msg))
+                .catch(err => console.log(err))
+        }
     }
+
+    // const ViewImage = (url) => {
+    //     const filename = url.split("/").pop()
+    //     const a = document.createElement('a')
+    //     a.href = url
+    //     a.setAttribute("download", filename)
+    //     document.body.appendChild(a)
+    //     a.click()
+    //     saveAs(url, filename)
+    //     a.remove()
+    // }
 
     return (
         <div className="allposts" style={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center", color: "wheat", backgroundColor: "black", minWidth: "95%", minHeight: "100vh" }}>
