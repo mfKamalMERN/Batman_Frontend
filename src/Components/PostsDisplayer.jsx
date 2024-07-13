@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import { toast } from "react-toastify"
 import './Card.css'
-// import { saveAs } from 'file-saver';
+import { saveAs } from 'file-saver';
 
 export const PostsDisplayer = ({ values, posts, batmans, postsFetcher }) => {
 
@@ -56,16 +56,20 @@ export const PostsDisplayer = ({ values, posts, batmans, postsFetcher }) => {
         }
     }
 
-    // const ViewImage = (url) => {
-    //     const filename = url.split("/").pop()
-    //     const a = document.createElement('a')
-    //     a.href = url
-    //     a.setAttribute("download", filename)
-    //     document.body.appendChild(a)
-    //     a.click()
-    //     saveAs(url, filename)
-    //     a.remove()
-    // }
+    const ViewImage = (url) => {
+
+        console.log(url);
+        const bloburl = URL.createObjectURL(new Blob([url],{type:"application/pdf"}))
+        console.log(bloburl);
+        saveAs(url, 'image.pdf')
+        const a = document.createElement('a')
+        a.href = url
+        a.download = 'img.JPG'
+        document.body.appendChild(a)
+        a.click()
+
+    }
+
 
     return (
         <div className="allposts" style={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center", color: "wheat", backgroundColor: "black", minWidth: "95%", minHeight: "100vh" }}>
@@ -105,7 +109,7 @@ export const PostsDisplayer = ({ values, posts, batmans, postsFetcher }) => {
                                 :
                                 <>
                                     <p>{post.Caption}</p>
-                                    <img src={post.Img} alt="" style={{ width: "90%", borderRadius: "15px" }} />
+                                    <img onClick={() => ViewImage(post.Img)} src={post.Img} alt="" style={{ width: "90%", borderRadius: "15px" }} />
 
                                     <div className="actionbtns">
                                         {

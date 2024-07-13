@@ -67,7 +67,7 @@ export const Home = () => {
         // setCommentstatus(false)
         // if (!commentstatus) setLikesstatus(true)
         // else setLikesstatus(false)
-    }, [likes, newcomment, updatedcomment, removecommentstatus, followstatus, posts, datas?.data?.AllPosts])
+    }, [likes, newcomment, updatedcomment, removecommentstatus, followstatus, posts])
 
     const ViewLikesSetter = (pid) => {
         setCommentstatus(false)
