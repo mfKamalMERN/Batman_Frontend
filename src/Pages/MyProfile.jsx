@@ -152,7 +152,7 @@ export const MyProfile = () => {
     }
 
     return (
-        <div className="all" style={{ display: "flex", flexDirection: "column", justifyContent: "flex-start", background: "black", height: "150vh", color: 'wheat' }}>
+        <div className="all" style={{ display: "flex", flexDirection: "column", justifyContent: "flex-start", background: "black", height: "150vh", color: 'wheat', alignItems: "center" }}>
 
             <Navbar />
 
@@ -268,10 +268,14 @@ export const MyProfile = () => {
                         ))
                     }
 
-
                 </table>
 
             </div>
+
+            <br />
+            <br />
+
+            <button onClick={() => nav(-1)} style={{ backgroundColor: "black", color: "wheat", width: "auto", marginTop: "5%", borderRadius: "15px", fontSize: "small", padding: "10px", height: "auto" }}>Back</button>
 
             <div className="table" style={{ display: "flex", justifyContent: "center", marginTop: "5%" }}>
                 {

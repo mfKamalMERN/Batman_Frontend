@@ -71,7 +71,7 @@ export const Home = () => {
 
     const ViewLikesSetter = (pid) => {
         setCommentstatus(false)
-        setLikesstatus(!likesstatus)
+        setLikesstatus(true)
         setPostid(pid)
         ViewLikes(pid)
     }

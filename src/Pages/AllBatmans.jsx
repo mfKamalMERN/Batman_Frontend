@@ -39,14 +39,14 @@ export const AllBatmans = () => {
     }
 
     return (
-        <div className="main" style={{ backgroundColor: "black", minHeight: "160vh", display: "flex", flexDirection: 'column' }}>
+        <div className="main" style={{ backgroundColor: "black", minHeight: "160vh", display: "flex", flexDirection: 'column', alignItems: "center" }}>
 
             <Navbar />
 
             <div className="batmans" style={{ marginTop: "150px", display: "flex", flexDirection: "column", alignItems: "center", backgroundColor: "black", justifyContent: "flex-start" }}>
                 {
                     batmans.map(batman => (
-                        <div className="btmans" style={{ width: "70%" }}>
+                        <div className="btmans" style={{ width: "140%" }}>
 
                             <div className="singlebatman" style={{ display: "flex", background: "black", color: "wheat", justifyContent: "space-between", alignItems: 'center', border: "1px solid wheat", borderRadius: "15px" }}>
 
@@ -73,7 +73,11 @@ export const AllBatmans = () => {
                         </div>
                     ))
                 }
+
             </div>
+
+            <button onClick={() => nav(-1)} style={{ backgroundColor: "black", color: "wheat", width: "auto", marginTop: "5%", borderRadius: "15px", fontSize: "medium", padding: "10px", height: "auto" }}>Back</button>
+
         </div>
 
     )
