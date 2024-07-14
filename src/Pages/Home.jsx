@@ -168,7 +168,7 @@ export const Home = () => {
         )
     }
 
-    else if (datas.isLoading && typeof (datas.data) !== "object") {
+    else if (datas?.isLoading && typeof (datas?.data) !== "object") {
         return (
             <>Loading...</>
         )
@@ -180,10 +180,11 @@ export const Home = () => {
             <div className="home" style={{ backgroundColor: "black", minHeight: "190vh" }}>
 
                 {
-                    !datas?.data?.Token?
+                    !datas?.data?.Token
+                        ?
                         tokenChecker()
                         :
-                        <PostsDisplayer values={{ AddNewComment, setNewcomment, newcomment, FollowUnfollow, RemoveComment, editStatussetter, UpdateComment, setUpdatedcomment, updatedcomment, commentid, editstatus, postid, commentstatus, likes, likesstatus, viewComments, ViewLikesSetter, LikeUnlike }} posts={datas.data.AllPosts} batmans={datas?.data?.AllBatman} postsFetcher={postsFetcher} />
+                        <PostsDisplayer values={{ AddNewComment, setNewcomment, newcomment, FollowUnfollow, RemoveComment, editStatussetter, UpdateComment, setUpdatedcomment, updatedcomment, commentid, editstatus, postid, commentstatus, likes, likesstatus, viewComments, ViewLikesSetter, LikeUnlike }} posts={datas?.data?.AllPosts} batmans={datas?.data?.AllBatman} postsFetcher={postsFetcher} />
                 }
             </div>
         )
